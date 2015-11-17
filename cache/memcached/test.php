@@ -6,7 +6,6 @@ $mc = new Memcached();
 $mc->addServer("localhost", 11211);
 
 $mc->set("foo", "Hello!");
-$mc->add("foo", "Hello!");
 $mc->set("bar", "Memcached...");
 
 $arr = array(
