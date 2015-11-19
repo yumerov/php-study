@@ -1,0 +1,34 @@
+<?php
+
+/**
+ * Short Description
+ *
+ * Long Description
+ *
+ * @package \Lzy\DoctorWho\Robots
+ * @author Levent Yumerov <yumerov.levent@gmail.com>
+ */
+
+namespace \Lzy\DoctorWho\Robots;
+
+/**
+ * Dalek robot
+ */
+class DalekRobot implements IDalekRobot {
+
+  /**
+   * hateTheDoctor description
+   * @return void
+   */
+  public function hateTheDoctor() {
+
+  }
+
+  /**
+   * exterminate description
+   * @return void
+   */
+  public function exterminate() {
+
+  }
+}
