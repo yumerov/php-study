@@ -1,2 +1,2 @@
 #!/bin/bash
-phpdoc -t docs -d src
+phpdoc -t docs -d src --template="responsive-twig"
