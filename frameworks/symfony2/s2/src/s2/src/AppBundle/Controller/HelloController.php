@@ -16,13 +16,21 @@ class HelloController extends Controller
     {
         return new Response('Hello world!');
     }
-    
-    
+      
     /**
      * @Route("/hello/json")
      */
     public function jsonAction()
     {
         return new JsonResponse(array('hello' => 'world!'));
+    }
+
+    
+    /**
+     * @Route("/hello/repeat/{repeat}")
+     */
+    public function repeatAction($repeat)
+    {
+        return new Response(str_repeat("hello world!<br>", $repeat));
     }
 }
