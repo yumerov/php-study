@@ -33,4 +33,15 @@ class HelloController extends Controller
     {
         return new Response(str_repeat("hello world!<br>", $repeat));
     }
+    
+    /**
+     * @Route("/hello/template")
+     */
+    public function templateAction()
+    {
+        $html = $this->container->get('templating')->render(
+            'hello/tpl.html.twig', ['param' => 'hello world!']);
+        
+        return new Response($html);
+    }
 }
