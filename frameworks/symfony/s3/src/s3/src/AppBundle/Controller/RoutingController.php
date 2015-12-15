@@ -4,7 +4,6 @@ namespace AppBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Response;
-// use Symfony\Component\HttpFoundation\Request;
 
 class RoutingController extends Controller
 {
@@ -17,5 +16,10 @@ class RoutingController extends Controller
   public function paramAction($page)
   {
     return new Response("page: $page");
+  }
+
+  public function getAction()
+  {
+    return new Response('hello world!');
   }
 }

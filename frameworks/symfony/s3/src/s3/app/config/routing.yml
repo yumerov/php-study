@@ -9,3 +9,8 @@ routing_hello:
 routing_param:
     path: /routing/param/{page}
     defaults: { _controller: AppBundle:Routing:param, page: 1 }
+
+routing_get:
+    path: /routing/get
+    defaults: { _controller: AppBundle:Routing:get }
+    methods: [GET]
