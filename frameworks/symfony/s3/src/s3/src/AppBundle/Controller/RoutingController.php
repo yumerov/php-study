@@ -13,4 +13,9 @@ class RoutingController extends Controller
   {
     return new Response('hello world!');
   }
+
+  public function paramAction($page)
+  {
+    return new Response("page: $page");
+  }
 }

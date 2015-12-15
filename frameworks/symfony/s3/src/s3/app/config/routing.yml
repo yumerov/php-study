@@ -5,3 +5,7 @@ app:
 routing_hello:
     path: /routing
     defaults: { _controller: AppBundle:Routing:index }
+
+routing_param:
+    path: /routing/param/{page}
+    defaults: { _controller: AppBundle:Routing:param, page: 1 }
