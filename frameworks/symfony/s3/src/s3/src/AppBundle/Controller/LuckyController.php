@@ -3,10 +3,11 @@
 namespace AppBundle\Controller;
 
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\JsonResponse;
 
-class LuckyController
+class LuckyController extends Controller
 {
   /**
   * @Route("/lucky/number")
@@ -41,5 +42,15 @@ class LuckyController
     $data = ['lucky_number' => rand(1, 100)];
 
     return new JsonResponse($data);
+  }
+
+  /**
+   * @Route("/lucky/template")
+   */
+  public function templateAction()
+  {
+    $data = ['luckyNumber' => rand(1, 100)];
+
+    return $this->render('lucky/number.html.twig', $data);
   }
 }
