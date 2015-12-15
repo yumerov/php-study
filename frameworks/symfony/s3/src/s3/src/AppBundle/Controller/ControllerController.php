@@ -26,4 +26,13 @@ class ControllerController extends Controller
   {
     throw $this->createNotFoundException("just an error page");
   }
+
+  /**
+   * @Route("/controller/flashes")
+   */
+  public function flashesAction()
+  {
+    $this->addFlash('notice', 'Just a flash message with ID: ' . rand(1, 100));
+    return $this->render('controller/flashes.html.twig');
+  }
 }
