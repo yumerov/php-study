@@ -22,4 +22,11 @@ class RoutingController extends Controller
   {
     return new Response('hello world!');
   }
+
+  public function urlAction()
+  {
+    $data = ['url' => $this->generateUrl('routing_param', ['page' => 3])];
+
+    return $this->render('routing/url.html.twig', $data);
+  }
 }

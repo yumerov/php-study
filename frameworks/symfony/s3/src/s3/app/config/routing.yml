@@ -14,3 +14,7 @@ routing_get:
     path: /routing/get
     defaults: { _controller: AppBundle:Routing:get }
     methods: [GET]
+
+routing_url:
+    path: /routing/url
+    defaults: { _controller: AppBundle:Routing:url }

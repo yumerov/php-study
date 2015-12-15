@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+ <ul>
+ 	<li>
+		<span><em>generated path for route "routing_param": </em><strong>{{ url }}</strong></span>
+ 	</li>
+
+ 	<li>
+ 		<span><em>in-twig generated url: </em><strong>{{ url('routing_param', {'page': 3}) }}</strong></span>
+ 	</li>
+ </ul>
+{% endblock %}
