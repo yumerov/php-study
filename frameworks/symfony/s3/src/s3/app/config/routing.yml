@@ -1,7 +1,6 @@
 doctrine:
-    resource: "@DoctrineBundle/Controller/"
-    type:     annotation
-    prefix:   /
+    resource: "@DoctrineDummyBundle/Resources/config/routing.yml"
+    prefix:   /doctrine
 
 new:
     resource: "@NewBundle/Resources/config/routing.yml"

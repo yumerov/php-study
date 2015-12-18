@@ -1,6 +1,6 @@
 <?php
 
-namespace Lzy\NewBundle\Entity;
+namespace Lzy\DoctrineDummyBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 

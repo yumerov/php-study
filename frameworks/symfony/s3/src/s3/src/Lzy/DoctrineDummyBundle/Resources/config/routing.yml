@@ -1,0 +1,3 @@
+create:
+    path: /create
+    defaults: { _controller: DoctrineDummyBundle:Basic:create }
