@@ -5,6 +5,7 @@ namespace Lzy\DoctrineDummyBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Response;
 use Lzy\DoctrineDummyBundle\Entity\Product;
+use Symfony\Component\HttpFoundation\JsonResponse;
 
 class BasicController extends Controller
 {
@@ -58,5 +59,27 @@ class BasicController extends Controller
         $em->flush();
         
         return new Response("new product with id " . $product->getId());
+    }
+    
+    public function viewAction($id) {
+        $product = $this->getDoctrine()
+            ->getRepository('DoctrineDummyBundle:Product')
+            ->find($id);
+        
+        if ($product instanceof Product)
+        {
+            $data = [
+                'id' => $product->getId(),
+                'name' => $product->getName(),
+                'price' => $product->getPrice(),
+                'description' => $product->getDescription(),
+            ];
+            $status = 200;
+        } else {
+            $data = ['error' => 'Cannot find product with id "' . $id . '"'];
+            $status = 404;
+        }
+        
+        return new JsonResponse($data, $status);
     }
 }

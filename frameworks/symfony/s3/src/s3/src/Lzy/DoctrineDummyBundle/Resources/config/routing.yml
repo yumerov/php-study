@@ -1,3 +1,7 @@
 create:
     path: /create
     defaults: { _controller: DoctrineDummyBundle:Basic:create }
+
+view:
+    path: /view/{id}
+    defaults: { _controller: DoctrineDummyBundle:Basic:view }
