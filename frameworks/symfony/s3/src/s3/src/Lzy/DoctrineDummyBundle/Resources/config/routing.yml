@@ -5,3 +5,7 @@ create:
 view:
     path: /view/{id}
     defaults: { _controller: DoctrineDummyBundle:Basic:view }
+
+update:
+    path: /update/{id}/{name}
+    defaults: { _controller: DoctrineDummyBundle:Basic:update }

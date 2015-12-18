@@ -21,6 +21,10 @@ class BasicController extends Controller
         return $name;
     }
     
+    /**
+     * 
+     * @return string
+     */
     private function _createDescription() {
         $description = "Lorem ipsum dolor sit amet, consectetur adipisicing elit."
             . " Culpa ex qui unde maiores, omnis laudantium vitae illo asperiores "
@@ -29,9 +33,6 @@ class BasicController extends Controller
     
         return $description;        
     }
-
-
-
 
     /**
      * 
@@ -52,6 +53,18 @@ class BasicController extends Controller
         return $product;
     }
     
+    private function _find($id, $em) {
+        return $em->getRepository('DoctrineDummyBundle:Product')->find($id);
+    }
+    
+    /**
+     * @param mixed $object
+     * @return type
+     */
+    private function _isProduct($object) {
+        return ($object instanceof Product);
+    }
+    
     public function createAction() {
         $product = $this->_createProduct();
         $em = $this->getDoctrine()->getManager();
@@ -62,11 +75,10 @@ class BasicController extends Controller
     }
     
     public function viewAction($id) {
-        $product = $this->getDoctrine()
-            ->getRepository('DoctrineDummyBundle:Product')
-            ->find($id);
+        $em = $this->getDoctrine()->getEntityManager();
+        $product = $this->_find($id, $em);
         
-        if ($product instanceof Product)
+        if ($this->_isProduct($product))
         {
             $data = [
                 'id' => $product->getId(),
@@ -74,6 +86,30 @@ class BasicController extends Controller
                 'price' => $product->getPrice(),
                 'description' => $product->getDescription(),
             ];
+            $status = 200;
+        } else {
+            $data = ['error' => 'Cannot find product with id "' . $id . '"'];
+            $status = 404;
+        }
+        
+        return new JsonResponse($data, $status);
+    }
+    
+    public function updateAction($id, $name)
+    {
+        $em = $this->getDoctrine()->getEntityManager();
+        $product = $this->_find($id, $em);
+        
+        if ($this->_isProduct($product))
+        {
+            $product->setName($name);
+            $em->flush();
+            $data = [
+                'id' => $product->getId(),
+                'name' => $product->getName(),
+                'price' => $product->getPrice(),
+                'description' => $product->getDescription(),
+            ];;
             $status = 200;
         } else {
             $data = ['error' => 'Cannot find product with id "' . $id . '"'];
