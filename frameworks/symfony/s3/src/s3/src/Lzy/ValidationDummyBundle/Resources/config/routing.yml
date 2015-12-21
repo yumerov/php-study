@@ -1,0 +1,3 @@
+author:
+    path: /notblank
+    defaults: { _controller: ValidationDummyBundle:Basic:author }
