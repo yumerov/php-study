@@ -118,4 +118,27 @@ class BasicController extends Controller
         
         return new JsonResponse($data, $status);
     }
+
+    public function deleteAction($id)
+    {
+        $em = $this->getDoctrine()->getEntityManager();
+        $product = $this->_find($id, $em);
+        
+        if ($this->_isProduct($product))
+        {
+            $productId = $product->getId();
+            $em->remove($product);
+            $em->flush();
+            $data = [
+                'status' => "success",
+                'message' => "Product with id {$productId} is deleted.",
+            ];;
+            $status = 200;
+        } else {
+            $data = ['error' => 'Cannot find product with id "' . $id . '"'];
+            $status = 404;
+        }
+        
+        return new JsonResponse($data, $status);
+    }
 }

@@ -9,3 +9,7 @@ view:
 update:
     path: /update/{id}/{name}
     defaults: { _controller: DoctrineDummyBundle:Basic:update }
+
+delete:
+    path: /delete/{id}
+    defaults: { _controller: DoctrineDummyBundle:Basic:delete }
