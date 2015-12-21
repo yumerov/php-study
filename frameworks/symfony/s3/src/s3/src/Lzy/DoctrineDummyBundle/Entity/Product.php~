@@ -5,7 +5,7 @@ namespace Lzy\DoctrineDummyBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
-* @ORM\Entity(repositoryClass="DoctrineDummyBundle\Entity\ProductRepository")
+* @ORM\Entity(repositoryClass="Lzy\DoctrineDummyBundle\Entity\ProductRepository")
 * @ORM\Table(name="product")
 */
 class Product
@@ -32,6 +32,12 @@ class Product
   */
   protected $description;
 
+  /**
+   * @ORM\ManyToOne(targetEntity="Category", inversedBy="products")
+   * @ORM\JoinColumn(name="category_id", referencedColumnName="id")
+   */
+  protected $category;
+  
   /**
    * Get id
    *

@@ -25,3 +25,7 @@ builder:
 custom_repository:
     path: /query/builder/all
     defaults: { _controller: DoctrineDummyBundle:Query:custom }
+
+association_create:
+    path: /association/create
+    defaults: { _controller: DoctrineDummyBundle:Association:create }
