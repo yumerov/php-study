@@ -17,3 +17,7 @@ delete:
 dql:
     path: /query/dql/{price}
     defaults: { _controller: DoctrineDummyBundle:Query:dql }
+
+builder:
+    path: /query/builder/{price}
+    defaults: { _controller: DoctrineDummyBundle:Query:builder }

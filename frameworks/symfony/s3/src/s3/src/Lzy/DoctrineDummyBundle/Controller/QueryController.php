@@ -19,4 +19,18 @@ class QueryController extends Controller
     $data = $query->getArrayResult();
     return new JsonResponse($data);
   }
+  
+  public function builderAction($price)
+  {
+    $realPrice = (float) $price;
+    $repository = $this->getDoctrine()->getRepository('DoctrineDummyBundle:Product');
+    $query = $repository
+      ->createQueryBuilder('p')
+      ->where('p.price > :price')
+      ->setParameter('price', $realPrice)
+      ->getQuery();
+    
+    $data = $query->getArrayResult();
+    return new JsonResponse($data);
+  }
 }
