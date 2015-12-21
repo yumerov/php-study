@@ -11,4 +11,10 @@ class Author {
    * @var string
    */
   public $name;
+
+  /**
+   * @Assert\Choice({"male", "female", "other"})
+   * @var string
+   */
+  public $gender; 
 }

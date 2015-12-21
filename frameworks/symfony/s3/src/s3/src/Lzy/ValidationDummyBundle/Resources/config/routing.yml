@@ -1,3 +1,7 @@
 author:
     path: /notblank
     defaults: { _controller: ValidationDummyBundle:Basic:author }
+
+choice:
+    path: /choice/{gender}
+    defaults: { _controller: ValidationDummyBundle:Basic:choice }

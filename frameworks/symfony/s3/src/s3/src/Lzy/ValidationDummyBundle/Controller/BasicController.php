@@ -24,6 +24,21 @@ class BasicController extends Controller {
   }
   
   public function choiceAction($gender) {
+    $author = new Author();
+    $author->name = "Levent";
+    $author->gender = $gender;
     
+        /** @var ValidatorInterface */
+    $validator = $this->get('validator');
+    $errors = $validator->validate($author);
+    
+    if (count($errors) > 0)
+    {
+      $responseString = (string) $errors;
+    } else {
+      $responseString = "Valid data";
+    }
+    
+    return new Response($responseString);
   }
 }
