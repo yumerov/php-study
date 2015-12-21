@@ -13,3 +13,7 @@ update:
 delete:
     path: /delete/{id}
     defaults: { _controller: DoctrineDummyBundle:Basic:delete }
+
+dql:
+    path: /query/dql/{price}
+    defaults: { _controller: DoctrineDummyBundle:Query:dql }
