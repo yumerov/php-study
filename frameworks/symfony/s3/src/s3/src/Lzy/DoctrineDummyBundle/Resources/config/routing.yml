@@ -21,3 +21,7 @@ dql:
 builder:
     path: /query/builder/{price}
     defaults: { _controller: DoctrineDummyBundle:Query:builder }
+
+custom_repository:
+    path: /query/builder/all
+    defaults: { _controller: DoctrineDummyBundle:Query:custom }

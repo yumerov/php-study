@@ -5,7 +5,7 @@ namespace Lzy\DoctrineDummyBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
-* @ORM\Entity
+* @ORM\Entity(repositoryClass="Lzy\DoctrineDummyBundle\Entity\ProductRepository")
 * @ORM\Table(name="product")
 */
 class Product

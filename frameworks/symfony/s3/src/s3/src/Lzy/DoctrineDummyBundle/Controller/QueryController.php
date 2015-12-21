@@ -33,4 +33,13 @@ class QueryController extends Controller
     $data = $query->getArrayResult();
     return new JsonResponse($data);
   }
+  
+  public function customAction() {
+    /**
+     * @var ProductRepository
+     */
+    $repository = $this->getDoctrine()->getRepository('DoctrineDummyBundle:Product');
+    $query = $repository->findAllOrderedByName();
+    return new JsonResponse((array) $data);
+  }
 }
