@@ -1,3 +1,3 @@
-form_dummy_homepage:
-    path:     /
-    defaults: { _controller: FormDummyBundle:Default:index }
+new:
+    path:     /new
+    defaults: { _controller: FormDummyBundle:Default:new }
