@@ -1,0 +1,3 @@
+lzy_blog:
+    resource: "@LzyBlogBundle/Resources/config/routing.yml"
+    prefix:   /

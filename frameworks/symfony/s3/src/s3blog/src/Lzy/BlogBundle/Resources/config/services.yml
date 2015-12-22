@@ -1,0 +1,4 @@
+services:
+#    lzy_blog.example:
+#        class: Lzy\BlogBundle\Example
+#        arguments: [@service_id, "plain_value", %parameter%]
