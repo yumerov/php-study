@@ -9,3 +9,7 @@ handle:
 multiple:
     path:     /multiple
     defaults: { _controller: FormDummyBundle:Default:multiple }
+
+type:
+    path:     /type
+    defaults: { _controller: FormDummyBundle:Type:new }
