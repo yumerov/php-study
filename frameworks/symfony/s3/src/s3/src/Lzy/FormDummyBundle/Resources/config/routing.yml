@@ -5,3 +5,7 @@ new:
 handle:
     path:     /handle
     defaults: { _controller: FormDummyBundle:Default:handle }
+
+multiple:
+    path:     /multiple
+    defaults: { _controller: FormDummyBundle:Default:multiple }
