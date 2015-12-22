@@ -1,3 +1,7 @@
 new:
     path:     /new
     defaults: { _controller: FormDummyBundle:Default:new }
+
+handle:
+    path:     /handle
+    defaults: { _controller: FormDummyBundle:Default:handle }
