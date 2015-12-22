@@ -1,3 +1,7 @@
+service_dummy:
+    resource: "@ServiceDummyBundle/Resources/config/routing.yml"
+    prefix:   /service
+
 form_dummy:
     resource: "@FormDummyBundle/Resources/config/routing.yml"
     prefix:   /form

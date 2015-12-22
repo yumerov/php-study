@@ -1,0 +1,7 @@
+parameters:
+  service_dummy.example.argument: "Hello from "
+
+services:
+  service_dummy.example:
+    class: Lzy\ServiceDummyBundle\Service\Example
+    arguments: ['%service_dummy.example.argument%']

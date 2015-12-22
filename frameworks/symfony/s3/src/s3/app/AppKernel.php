@@ -20,6 +20,7 @@ class AppKernel extends Kernel
             new Lzy\DoctrineDummyBundle\DoctrineDummyBundle(),
             new Lzy\ValidationDummyBundle\ValidationDummyBundle(),
             new Lzy\FormDummyBundle\FormDummyBundle(),
+            new Lzy\ServiceDummyBundle\ServiceDummyBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'), true)) {
