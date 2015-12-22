@@ -1,3 +1,7 @@
+form_dummy:
+    resource: "@FormDummyBundle/Resources/config/routing.yml"
+    prefix:   /
+
 doctrine:
     resource: "@ValidationDummyBundle/Resources/config/routing.yml"
     prefix:   /validation
