@@ -4,10 +4,10 @@ namespace Lzy\BlogBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
-class DefaultController extends Controller
+class FrontendController extends Controller
 {
     public function indexAction()
     {
-        return $this->render('LzyBlogBundle:Default:index.html.twig');
+        return $this->render('LzyBlogBundle:Frontend:index.html.twig');
     }
 }
