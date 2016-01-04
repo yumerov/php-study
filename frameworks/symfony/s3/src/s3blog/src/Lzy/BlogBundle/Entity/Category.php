@@ -28,13 +28,13 @@ class Category {
    * @var \Doctrine\Common\Collections\ArrayCollection
    * @ORM\OneToMany(targetEntity="Post", mappedBy="category")
    */
-  protected $products;
+  protected $posts;
 
   /**
    * Constructor
    */
   public function __construct() {
-    $this->products = new \Doctrine\Common\Collections\ArrayCollection();
+    $this->posts = new \Doctrine\Common\Collections\ArrayCollection();
   }
 
   /**
@@ -47,34 +47,34 @@ class Category {
   }
 
   /**
-   * Add product
+   * Add post
    *
-   * @param \Lzy\BlogBundle\Entity\Post $product
+   * @param \Lzy\BlogBundle\Entity\Post $post
    *
    * @return Category
    */
-  public function addProduct(\Lzy\BlogBundle\Entity\Post $product) {
-    $this->products[] = $product;
+  public function addPost(\Lzy\BlogBundle\Entity\Post $post) {
+    $this->posts[] = $post;
 
     return $this;
   }
 
   /**
-   * Remove product
+   * Remove post
    *
-   * @param \Lzy\BlogBundle\Entity\Post $product
+   * @param \Lzy\BlogBundle\Entity\Post $post
    */
-  public function removeProduct(\Lzy\BlogBundle\Entity\Post $product) {
-    $this->products->removeElement($product);
+  public function removePost(\Lzy\BlogBundle\Entity\Post $post) {
+    $this->posts->removeElement($post);
   }
 
   /**
-   * Get products
+   * Get posts
    *
    * @return \Doctrine\Common\Collections\Collection
    */
-  public function getProducts() {
-    return $this->products;
+  public function getPosts() {
+    return $this->posts;
   }
 
 

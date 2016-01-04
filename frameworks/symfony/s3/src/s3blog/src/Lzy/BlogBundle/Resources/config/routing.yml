@@ -1,3 +1,7 @@
+lzy_blog_page:
+    path:     /page/{page}
+    defaults: { _controller: LzyBlogBundle:Frontend:index, page: 0 }
+
 lzy_blog_homepage:
     path:     /
     defaults: { _controller: LzyBlogBundle:Frontend:index }

@@ -19,8 +19,8 @@
 {% block content %}
 	{% block header %}
 		<div class="blog-header">
-		   <h1 class="blog-title">{ { blog title } }</h1>
-		   <p class="lead blog-description">{ { blog description } }</p>
+		   <h1 class="blog-title">{{ blog.title }}</h1>
+		   <p class="lead blog-description">{{ blog.description }}</p>
 		 </div>
 	{% endblock %}
 
@@ -37,7 +37,7 @@
 	            <h4>About</h4>
 	            <p>Etiam porta <em>sem malesuada magna</em> mollis euismod. Cras mattis consectetur purus sit amet fermentum. Aenean lacinia bibendum nulla sed consectetur.</p>
 	          </div>
-	          
+
 	          <div class="sidebar-module">
 	            <h4>Archives</h4>
 	            <ol class="list-unstyled">
