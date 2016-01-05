@@ -1,0 +1,3 @@
+# !/usr/bin/bash
+# Run Fixtures tests
+vendor/bin/phpunit tests/fixtures
