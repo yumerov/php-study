@@ -49,4 +49,26 @@ class Data {
     return $data;
   }
 
+  /**
+   * Returns data needed for populating post view page template
+   * 
+   * @param integer $id
+   * @return Array
+   */
+  public function getPostViewData($id) {
+
+    /** @var Lzy\BlogBundle\Entity\OptionRepository */
+    $postRepository = $this->_em->getRepository('LzyBlogBundle:Post');
+
+    /** @var Lzy\BlogBundle\Entity\PostRepository; */
+    $optionRepository = $this->_em->getRepository('LzyBlogBundle:Option');
+
+    $data = [
+      'blog' => $optionRepository->getGeneralData(),
+      'post' => $postRepository->findOneById($id),
+    ];
+
+    return $data;
+  }
+
 }

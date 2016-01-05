@@ -10,6 +10,7 @@
 		  {{ post.content }}
 		</div><!-- /.blog-post -->
 
+	{% if post.tags is not empty %}
 	<nav>
 	  <ul class="pager">
 	  	{% for tag in post.tags %}
@@ -17,4 +18,5 @@
 	  	{% endfor %}
 	  </ul>
 	</nav>
+	{% endif %}
 {% endblock %}
