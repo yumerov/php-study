@@ -9,9 +9,18 @@ class FrontendController extends Controller
   /**
    * @todo add logic if posts are missing, to render 404 page
    */
-  public function indexAction($page = 0)
+  public function indexAction($page = 1)
+  {    
+    /** @var Lzy\BlogBundle\Service */
+    $service = $this->get('blog.data');
+    /** @var Array */
+    $data = $service->getPostListData((int) $page);
+    $template = 'LzyBlogBundle:Frontend:index.html.twig';
+    return $this->render($template, $data);
+  }
+  
+  public function postAction($id)
   {
-    define('PER_PAGE', 2);
     /** @var Lzy\BlogBundle\Entity\PostRepository */
     $repository = $this->getDoctrine()->getRepository('LzyBlogBundle:Post');
     $data = [
@@ -21,11 +30,9 @@ class FrontendController extends Controller
         'author' => 'lzy',
         'date_format' => 'F d, Y',
       ],
-      'posts' => $repository->getPostsByPage(PER_PAGE, (int)$page),
-      'has_before' => $repository->hasPostsBeforePage(PER_PAGE, (int)$page),
-      'has_after' => $repository->hasPostsAfterPage(PER_PAGE, (int)$page),
+      'post' => $repository->findOneById($id),
     ];
     
-    return $this->render('LzyBlogBundle:Frontend:index.html.twig', $data);
+    return $this->render('LzyBlogBundle:Frontend:view_post.html.twig', $data);
   }
 }

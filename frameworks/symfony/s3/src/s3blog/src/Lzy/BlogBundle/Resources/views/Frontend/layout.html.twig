@@ -13,7 +13,7 @@
 {% block bodyClass %}{{ parent() }} blog{% endblock %}
 
 {% block navigation %}
-	<a class="blog-nav-item" href="/">Home</a>
+	<a class="blog-nav-item" href="{{ url('lzy_blog_homepage') }}">Home</a>
 {% endblock %}
 
 {% block content %}

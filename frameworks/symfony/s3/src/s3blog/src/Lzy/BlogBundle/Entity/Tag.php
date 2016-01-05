@@ -21,7 +21,7 @@ class Tag {
    * @var string
    * @ORM\Column(type="string", length=128)
    */
-  protected $key;
+  protected $name;
 
   /**
    * @ORM\ManyToMany(targetEntity="Post", mappedBy="tags")
@@ -45,25 +45,25 @@ class Tag {
   }
 
   /**
-   * Set key
+   * Set name
    *
-   * @param string $key
+   * @param string $name
    *
    * @return Tag
    */
-  public function setKey($key) {
-    $this->key = $key;
+  public function setName($name) {
+    $this->name = $name;
 
     return $this;
   }
 
   /**
-   * Get key
+   * Get name
    *
    * @return string
    */
-  public function getKey() {
-    return $this->key;
+  public function getName() {
+    return $this->name;
   }
 
   /**

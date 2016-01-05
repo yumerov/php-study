@@ -5,7 +5,8 @@ namespace Lzy\BlogBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="Lzy\BlogBundle\Entity\OptionRepository")
+ * @ORM\Table(name="`option`")
  */
 class Option {
 
@@ -19,13 +20,13 @@ class Option {
 
   /**
    * @var string
-   * @ORM\Column(type="string", length=128)
+   * @ORM\Column(name="`key`", type="string", length=128)
    */
   protected $key;
 
   /**
    * @var string
-   * @ORM\Column(type="text")
+   * @ORM\Column(name="`value`", type="text")
    */
   protected $value;
 

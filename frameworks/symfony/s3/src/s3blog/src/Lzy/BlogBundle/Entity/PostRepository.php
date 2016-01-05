@@ -5,7 +5,7 @@ namespace Lzy\BlogBundle\Entity;
 use Doctrine\ORM\EntityRepository;
 
 /**
- * @todo refactor!
+ * @todo refactor and documentate
  */
 class PostRepository extends EntityRepository {
   
@@ -27,7 +27,20 @@ class PostRepository extends EntityRepository {
     }
   }
   
-  /**
+  protected function _getPostsByPage($limit, $first)
+  {
+    /** @var EntityManager */
+    $em = $this->getEntityManager();
+    
+    $query = $em->createQuery($this->getPostsQuery)
+      ->setMaxResults($limit)
+      ->setFirstResult($first);
+    $result = $query->getResult();
+    
+    return $result;
+  }
+
+    /**
    * 
    * @param integer $count
    * @param integer $page
@@ -40,20 +53,13 @@ class PostRepository extends EntityRepository {
       throw new \Exception("Page must be an integer.");
     }
     
-    if ($page < 0) {
-      throw new \Exception("Page must be non-negative.");
+    if ($page < 1) {
+      throw new \Exception("Page must be positive.");
     }
     
-    $first = $count * $page;
-    $limit = $count;
+    $first = $count * ($page - 1);
     
-    /** @var EntityManager */
-    $em = $this->getEntityManager();
-    
-    $query = $em->createQuery($this->getPostsQuery)
-      ->setMaxResults($limit)
-      ->setFirstResult($first);
-    $result = $query->getResult();
+    $result = $this->_getPostsByPage($count, $first);
     
     return $result;
   }
@@ -72,18 +78,11 @@ class PostRepository extends EntityRepository {
       throw new \Exception("Page must be an integer.");
     }
     
-    if ($page === 0) return false;
+    if ($page === 1) return false;
     
-    $first = $count * ($page - 1);
-    $limit = $count;
+    $first = $count * ($page - 2);
     
-    /** @var EntityManager */
-    $em = $this->getEntityManager();
-    
-    $query = $em->createQuery($this->getPostsQuery)
-      ->setMaxResults($limit)
-      ->setFirstResult($first);
-    $result = $query->getResult();
+    $result = $this->_getPostsByPage($count, $first);
     
     return (is_array($result) && !empty($result));
   }
@@ -99,16 +98,9 @@ class PostRepository extends EntityRepository {
       throw new \Exception("Page must be non-negative.");
     }
     
-    $first = $count * ($page + 1);
-    $limit = $count;
-    
-    /** @var EntityManager */
-    $em = $this->getEntityManager();
-    
-    $query = $em->createQuery($this->getPostsQuery)
-      ->setMaxResults($limit)
-      ->setFirstResult($first);
-    $result = $query->getResult();
+    $first = $count * $page;
+
+    $result = $this->_getPostsByPage($count, $first);
     
     return (is_array($result) && !empty($result));
   }

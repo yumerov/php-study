@@ -1,4 +1,13 @@
+# parameters:
+#   blog.general.em: "@doctrine.orm.entity_manager"
+
 services:
-#    lzy_blog.example:
-#        class: Lzy\BlogBundle\Example
-#        arguments: [@service_id, "plain_value", %parameter%]
+  blog.data:
+    class: Lzy\BlogBundle\Service\Data
+    arguments: ["@doctrine.orm.entity_manager"]
+  # blog.posts:
+  #   class: Lzy\BlogBundle\Service\Post
+  #   arguments: ["@doctrine.orm.entity_manager"]
+  blog.options:
+    class: Lzy\BlogBundle\Service\Options
+    arguments: ["@doctrine.orm.entity_manager"]
