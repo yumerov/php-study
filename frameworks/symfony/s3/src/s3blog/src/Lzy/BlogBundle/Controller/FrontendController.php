@@ -12,10 +12,22 @@ class FrontendController extends Controller {
   public function indexAction($page = 1) {
     /** @var Lzy\BlogBundle\Service */
     $service = $this->get('blog.data');
-    /** @var Array */
-    $data = $service->getPostListData((int) $page);
-    $template = 'LzyBlogBundle:Frontend:index.html.twig';
-    return $this->render($template, $data);
+    $response = $this->forward('LzyBlogBundle:Frontend:error404');
+
+    try {
+      /** @var Array */
+      $data = $service->getPostListData((int) $page);
+
+      if ($data['posts']) {
+        $template = 'LzyBlogBundle:Frontend:index.html.twig';
+        $response = $this->render($template, $data);
+      }
+    } catch (\Exception $ex) {
+      // do nothing, the error response is set by default
+    }
+
+
+    return $response;
   }
 
   public function postAction($id) {
@@ -23,7 +35,24 @@ class FrontendController extends Controller {
     $service = $this->get('blog.data');
     /** @var Array */
     $data = $service->getPostViewData($id);
-    $template = 'LzyBlogBundle:Frontend:view_post.html.twig';
+
+    if ($data['post']) {
+      $template = 'LzyBlogBundle:Frontend:view_post.html.twig';
+      $response = $this->render($template, $data);
+    } else {
+      $response = $this->forward('LzyBlogBundle:Frontend:error404');
+    }
+
+    return $response;
+  }
+
+  public function error404Action() {
+    /** @var Lzy\BlogBundle\Service */
+    $service = $this->get('blog.data');
+
+    $template = 'LzyBlogBundle:Frontend:404.html.twig';
+    $data = $service->getError404Data();
+
     return $this->render($template, $data);
   }
 

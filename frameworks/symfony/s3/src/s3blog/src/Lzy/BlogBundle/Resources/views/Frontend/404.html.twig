@@ -1,0 +1,13 @@
+{% extends "LzyBlogBundle:Frontend:layout.html.twig" %}
+
+{% block title %}{{ blog.title }} - 404{% endblock %}
+
+{% block bodyClass %}{{ parent() }} error404{% endblock %}
+
+{% block posts %}
+		<div class="blog-post">
+		  <h2 class="blog-post-title">{{ error.title }}</h2>
+
+		  <p>{{ error.content }}</p>
+		</div><!-- /.blog-post -->
+{% endblock %}

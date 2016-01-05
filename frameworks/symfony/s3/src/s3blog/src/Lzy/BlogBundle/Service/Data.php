@@ -71,4 +71,28 @@ class Data {
     return $data;
   }
 
+  /**
+   * Returns data needed for populating error 404 page template
+   * 
+   * @return Array
+   */
+  public function getError404Data() {
+
+    /** @var Lzy\BlogBundle\Entity\OptionRepository */
+    $postRepository = $this->_em->getRepository('LzyBlogBundle:Post');
+
+    /** @var Lzy\BlogBundle\Entity\PostRepository; */
+    $optionRepository = $this->_em->getRepository('LzyBlogBundle:Option');
+
+    $data = [
+      'blog' => $optionRepository->getGeneralData(),
+      'error' => [
+        'title' => 'Error 404',
+        'content' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsum, nostrum nemo sed possimus quas! Nulla quibusdam ad ipsam itaque at labore, est cumque iure, temporibus consequuntur nobis pariatur provident eveniet!',
+      ],
+    ];
+
+    return $data;
+  }
+
 }
