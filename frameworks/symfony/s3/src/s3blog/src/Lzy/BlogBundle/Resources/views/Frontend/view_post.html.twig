@@ -7,7 +7,7 @@
 {% block posts %}
 		<div class="blog-post">
 		  <h2 class="blog-post-title">{{ post.title }}</h2>
-		  <p class="blog-post-meta">{{ post.createdAt|date(blog.date_format) }} by <a href="#">{{ blog.author }}</a> under <a href="#category-page">{{ post.category.name }}</a></p>
+		  <p class="blog-post-meta">{{ post.createdAt|date(blog.date_format) }} by <a href="#">{{ blog.author }}</a> under <a href="{{ url('lzy_blog_category', {'id': post.category.id }) }}">{{ post.category.name }}</a></p>
 
 		  {{ post.content }}
 		</div><!-- /.blog-post -->

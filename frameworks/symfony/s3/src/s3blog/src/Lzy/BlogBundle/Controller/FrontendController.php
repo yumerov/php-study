@@ -56,4 +56,21 @@ class FrontendController extends Controller {
     return $this->render($template, $data);
   }
 
+  public function categoryAction($id) {
+    /** @var Lzy\BlogBundle\Service */
+    $service = $this->get('blog.data');
+    
+    /** @var Array */
+    $data = $service->getCategoryViewData($id);
+
+    if ($data['category']) {
+      $template = 'LzyBlogBundle:Frontend:category.html.twig';
+      $response = $this->render($template, $data);
+    } else {
+      $response = $this->forward('LzyBlogBundle:Frontend:error404');
+    }
+
+    return $response;
+  }
+
 }

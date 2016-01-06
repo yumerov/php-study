@@ -72,6 +72,33 @@ class Data {
   }
 
   /**
+   * Returns data needed for populating category view page template
+   * 
+   * @param integer $id
+   * @return Array
+   */
+  public function getCategoryViewData($id, $page = 1) {
+    /** @var Lzy\BlogBundle\Entity\CategoryRepository */
+    $categoryRepository = $this->_em->getRepository('LzyBlogBundle:Category');
+    
+    /** @var Lzy\BlogBundle\Entity\PostRepository */
+    $postRepository = $this->_em->getRepository('LzyBlogBundle:Post');
+    
+    /** @var Lzy\BlogBundle\Entity\PostRepository; */
+    $optionRepository = $this->_em->getRepository('LzyBlogBundle:Option');
+    $perPage = $optionRepository->getPerPage();
+
+    $data = [
+      'blog' => $optionRepository->getGeneralData(),
+      'category' => $categoryRepository->findOneById((int) $id),
+      'posts' => $postRepository
+        ->findByCategoryIdAndPagination((int) $id, (int) $page, (int) $perPage)
+    ];
+
+    return $data;
+  }
+
+  /**
    * Returns data needed for populating error 404 page template
    * 
    * @return Array
@@ -88,7 +115,10 @@ class Data {
       'blog' => $optionRepository->getGeneralData(),
       'error' => [
         'title' => 'Error 404',
-        'content' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsum, nostrum nemo sed possimus quas! Nulla quibusdam ad ipsam itaque at labore, est cumque iure, temporibus consequuntur nobis pariatur provident eveniet!',
+        'content' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.'
+          . ' Ipsum, nostrum nemo sed possimus quas! Nulla quibusdam ad ipsam'
+          . ' itaque at labore, est cumque iure, temporibus consequuntur'
+          . ' nobis pariatur provident eveniet!',
       ],
     ];
 

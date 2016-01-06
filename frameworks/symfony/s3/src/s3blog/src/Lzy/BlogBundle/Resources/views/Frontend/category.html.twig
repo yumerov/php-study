@@ -1,0 +1,28 @@
+{% extends "LzyBlogBundle:Frontend:layout.html.twig" %}
+
+{% block title %}{{ blog.title }} - {{ category.name }}{% endblock %}
+
+{% block bodyClass %}{{ parent() }} category category-{{ category.id }}{% endblock %}
+
+{% block posts %}
+	<div class="sidebar-module sidebar-module-inset">
+	  <h2>{{ category.name }}</h2>
+	</div>
+
+	{% if posts is not empty %}
+		{% for post in posts %}
+			<div class="blog-post">
+			  <h2 class="blog-post-title">{{ post.title }}</h2>
+			  <p class="blog-post-meta">{{ post.createdAt|date(blog.date_format) }} by <a href="#">{{ blog.author }}</a> under <a href="{{ url('lzy_blog_category', {'id': category.id }) }}">{{ category.name }}</a></p>
+
+			  {{ post.content }}
+			</div><!-- /.blog-post -->
+		{% endfor %}
+	{% else %}
+		<div class="blog-post">
+		  <h2 class="blog-post-title">No posts</h2>
+
+		  <p>Sorry, no posts</p>
+		</div><!-- /.blog-post -->
+	{% endif %}
+{% endblock %}
