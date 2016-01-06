@@ -1,0 +1,4 @@
+# !/usr/bin/bash
+# Run Php Unit Tests
+vendor/bin/phpunit tests
+
