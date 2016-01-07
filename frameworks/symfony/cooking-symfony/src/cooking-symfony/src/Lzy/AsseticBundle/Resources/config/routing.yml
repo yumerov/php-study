@@ -1,0 +1,7 @@
+lzy_assetic_homepage:
+    path:     /
+    defaults: { _controller: LzyAsseticBundle:Default:index }
+
+lzy_assetic_including_js:
+    path:     /including_js_css
+    defaults: { _controller: LzyAsseticBundle:Default:includingJsCss }

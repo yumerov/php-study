@@ -1,0 +1,4 @@
+lzy_assetic:
+    resource: "@LzyAsseticBundle/Resources/config/routing.yml"
+    prefix:   /assetic
+
