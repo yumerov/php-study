@@ -1,6 +1,6 @@
 lzy_bundle:
     resource: "@LzyBundleBundle/Resources/config/routing.yml"
-    prefix:   /
+    prefix:   /bundle
 
 lzy_assetic:
     resource: "@LzyAsseticBundle/Resources/config/routing.yml"
