@@ -1,0 +1,4 @@
+services:
+#    lzy_console.example:
+#        class: Lzy\ConsoleBundle\Example
+#        arguments: [@service_id, "plain_value", %parameter%]

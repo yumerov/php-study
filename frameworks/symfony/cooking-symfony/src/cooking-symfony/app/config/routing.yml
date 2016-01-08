@@ -1,3 +1,7 @@
+lzy_console:
+    resource: "@LzyConsoleBundle/Resources/config/routing.yml"
+    prefix:   /
+
 lzy_bundle:
     resource: "@LzyBundleBundle/Resources/config/routing.yml"
     prefix:   /bundle
