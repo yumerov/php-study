@@ -10,23 +10,28 @@ use Symfony\Component\Console\Output\OutputInterface;
 
 class GreetCommand extends ContainerAwareCommand {
 
+  const ARGUMENT_NAME = 'name';
+  const ARGUMENT_DESCRIPTION = 'Who do you want to greet?';
+  const OPTION_NAME = 'yell';
+  const OPTION_DESCRIPTION = "If set, the task will yell in uppercase";
+  
   protected function configure() {
     $this
       ->setName('lzy:greet')
       ->setDescription('Greet someone')
       ->addArgument(
-        'name', InputArgument::OPTIONAL, "Who do you want to greet?"
+        self::ARGUMENT_NAME, InputArgument::OPTIONAL, self::ARGUMENT_DESCRIPTION
       )
       ->addOption(
-        "yell", NULL, InputOption::VALUE_NONE, "If set, the task will yell in uppercase"
+        self::OPTION_NAME, NULL, InputOption::VALUE_NONE, self::OPTION_DESCRIPTION
       )
     ;
   }
 
   protected function execute(InputInterface $input, OutputInterface $output) {
-    $name = $input->getArgument("name");
+    $name = $input->getArgument(self::ARGUMENT_NAME);
     $text = ($name) ? "Hello {$name}" : "Hello";
-    $text = ($input->getOption("yell")) ? strtoupper($text) : $text;
+    $text = ($input->getOption(self::OPTION_NAME)) ? strtoupper($text) : $text;
     $output->writeln($text);
     
     /** @var \Psr\Log\LoggerInterface */
