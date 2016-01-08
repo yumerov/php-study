@@ -15,4 +15,9 @@ class DefaultController extends Controller
     {
         return $this->render('LzyAsseticBundle:Default:including_js_css_img.html.twig');
     }
+
+    public function combiningAssetsAction()
+    {
+        return $this->render('LzyAsseticBundle:Default:combining_assets.html.twig');
+    }
 }

@@ -5,3 +5,7 @@ lzy_assetic_homepage:
 lzy_assetic_including_js:
     path:     /including_js_css_img
     defaults: { _controller: LzyAsseticBundle:Default:includingJsCssImg }
+
+lzy_assetic_combining_assets:
+    path:     /combining_assets
+    defaults: { _controller: LzyAsseticBundle:Default:combiningAssets }
