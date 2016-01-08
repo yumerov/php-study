@@ -11,8 +11,8 @@ class LzyBundleBundle extends Bundle
 	/**
 	 * @return string
 	 */
-	// public function getParent() 
-	// {
-	// 	return self::PARENT;
-	// }
+	public function getParent() 
+	{
+		return self::PARENT;
+	}
 }
