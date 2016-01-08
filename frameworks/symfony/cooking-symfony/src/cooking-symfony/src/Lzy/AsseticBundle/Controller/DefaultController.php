@@ -20,4 +20,9 @@ class DefaultController extends Controller
     {
         return $this->render('LzyAsseticBundle:Default:combining_assets.html.twig');
     }
+
+    public function namedAssetsAction()
+    {
+        return $this->render('LzyAsseticBundle:Default:named_assets.html.twig');
+    }
 }

@@ -9,3 +9,7 @@ lzy_assetic_including_js:
 lzy_assetic_combining_assets:
     path:     /combining_assets
     defaults: { _controller: LzyAsseticBundle:Default:combiningAssets }
+
+lzy_assetic_named_assets:
+    path:     /named_assets
+    defaults: { _controller: LzyAsseticBundle:Default:namedAssets }

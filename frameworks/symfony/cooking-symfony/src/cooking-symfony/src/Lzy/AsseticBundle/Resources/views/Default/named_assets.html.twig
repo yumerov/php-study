@@ -1,0 +1,9 @@
+{% extends '::base.html.twig' %}
+
+{% block javascripts %}
+	{% javascripts
+	    '@jquery'
+	    '@LzyAsseticBundle/Resources/public/js/*' %}
+	    <script src="{{ asset_url }}"></script>
+	{% endjavascripts %}
+{% endblock %}
