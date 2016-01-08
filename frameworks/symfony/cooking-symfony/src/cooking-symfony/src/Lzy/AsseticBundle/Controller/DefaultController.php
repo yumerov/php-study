@@ -11,8 +11,8 @@ class DefaultController extends Controller
         return $this->render('LzyAsseticBundle:Default:index.html.twig');
     }
 
-    public function includingJsCssAction()
+    public function includingJsCssImgAction()
     {
-        return $this->render('LzyAsseticBundle:Default:including_js_css.html.twig');
+        return $this->render('LzyAsseticBundle:Default:including_js_css_img.html.twig');
     }
 }

@@ -3,5 +3,5 @@ lzy_assetic_homepage:
     defaults: { _controller: LzyAsseticBundle:Default:index }
 
 lzy_assetic_including_js:
-    path:     /including_js_css
-    defaults: { _controller: LzyAsseticBundle:Default:includingJsCss }
+    path:     /including_js_css_img
+    defaults: { _controller: LzyAsseticBundle:Default:includingJsCssImg }

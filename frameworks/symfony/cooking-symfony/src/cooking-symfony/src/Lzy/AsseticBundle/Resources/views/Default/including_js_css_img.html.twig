@@ -11,3 +11,10 @@
     <script src="{{ asset_url }}"></script>
   {% endjavascripts %}
 {% endblock %}
+
+{% block body %}
+  {% image '@LzyAsseticBundle/Resources/public/images/batman.jpg' %}
+    <img src="{{ asset_url }}" alt="Example" />
+  {% endimage %}
+{% endblock %}
+
