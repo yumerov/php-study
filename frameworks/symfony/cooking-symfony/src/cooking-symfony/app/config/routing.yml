@@ -1,3 +1,7 @@
+lzy_bundle:
+    resource: "@LzyBundleBundle/Resources/config/routing.yml"
+    prefix:   /
+
 lzy_assetic:
     resource: "@LzyAsseticBundle/Resources/config/routing.yml"
     prefix:   /assetic
