@@ -1,3 +1,7 @@
 lzy_controller_homepage:
     path:     /
     defaults: { _controller: LzyControllerBundle:Default:index }
+
+lzy_controller_name:
+    path:     /name/{name}
+    defaults: { _controller: LzyControllerBundle:Default:name }
