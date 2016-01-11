@@ -19,6 +19,7 @@ class AppKernel extends Kernel
             new Lzy\AsseticBundle\LzyAsseticBundle(),
             new Lzy\BundleBundle\LzyBundleBundle(),
             new Lzy\ConsoleBundle\LzyConsoleBundle(),
+            new Lzy\ControllerBundle\LzyControllerBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'), true)) {

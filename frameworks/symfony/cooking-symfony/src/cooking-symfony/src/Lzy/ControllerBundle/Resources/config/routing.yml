@@ -1,0 +1,3 @@
+lzy_controller_homepage:
+    path:     /
+    defaults: { _controller: LzyControllerBundle:Default:index }

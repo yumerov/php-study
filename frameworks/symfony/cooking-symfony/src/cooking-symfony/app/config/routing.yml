@@ -1,3 +1,7 @@
+lzy_controller:
+    resource: "@LzyControllerBundle/Resources/config/routing.yml"
+    prefix:   /controller
+
 lzy_console:
     resource: "@LzyConsoleBundle/Resources/config/routing.yml"
     prefix:   /
