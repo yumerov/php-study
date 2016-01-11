@@ -1,0 +1,5 @@
+services:
+    lzy.event_bundle.exception_listener:
+        class: Lzy\EventBundle\EventListener\ExceptionListener
+        tags:
+            - { name: kernel.event_listener, event: kernel.exception }
