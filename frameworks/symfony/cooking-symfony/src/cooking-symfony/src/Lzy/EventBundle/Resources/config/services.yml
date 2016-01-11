@@ -3,3 +3,7 @@ services:
         class: Lzy\EventBundle\EventListener\ExceptionListener
         tags:
             - { name: kernel.event_listener, event: kernel.exception }
+    lzy.event_bundle.exception_subscriber:
+        class: Lzy\EventBundle\EventSubscriber\ExceptionSubscriber
+        tags:
+            - { name: kernel.event_subscriber }
