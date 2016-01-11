@@ -1,0 +1,3 @@
+lzy_doctrine_homepage:
+    path:     /
+    defaults: { _controller: LzyDoctrineBundle:Default:index }
