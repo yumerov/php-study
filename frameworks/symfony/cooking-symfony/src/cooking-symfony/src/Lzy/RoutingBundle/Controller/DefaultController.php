@@ -31,5 +31,9 @@ class DefaultController extends Controller {
     return new Response('this action uses a route that uses a parameter from '
       . 'parameters.yml; the prefix is ' . $_prefix);
   }
+  
+  public function passInfoAction($param, $title) {
+    return new Response("param: {$param}; title: {$title}");
+  }
 
 }

@@ -34,3 +34,10 @@ lzy_routing_param:
   defaults: { _controller: LzyRoutingBundle:Default:param }
   requirements:
     _prefix: '%lzy_routing_prefix%'
+
+lzy_routing_pass_info:
+  path: /extra/{param}
+  defaults:
+    _controller: LzyRoutingBundle:Default:passInfo
+    param: 1
+    title: "Hello world"
