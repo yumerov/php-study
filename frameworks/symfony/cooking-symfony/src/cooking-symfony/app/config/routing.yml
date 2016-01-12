@@ -1,3 +1,7 @@
+lzy_form:
+    resource: "@LzyFormBundle/Resources/config/routing.yml"
+    prefix:   /form
+
 lzy_event:
     resource: "@LzyEventBundle/Resources/config/routing.yml"
     prefix:   /

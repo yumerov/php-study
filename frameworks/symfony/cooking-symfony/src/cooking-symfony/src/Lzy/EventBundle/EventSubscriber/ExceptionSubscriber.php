@@ -2,7 +2,6 @@
 
 namespace Lzy\EventBundle\EventSubscriber;
 
-use Doctrine\Common\EventSubscriber;
 use Symfony\Component\HttpKernel\Event\GetResponseForExceptionEvent;
 
 class ExceptionSubscriber implements \Symfony\Component\EventDispatcher\EventSubscriberInterface {
