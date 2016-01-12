@@ -13,3 +13,18 @@ lzy_routing_redirect:
     _controller: FrameworkBundle:Redirect:redirect
     route: lzy_routing_homepage
     permanent: true
+
+lzy_routing_get:
+  path: /get
+  defaults: { _controller: LzyRoutingBundle:Default:get }
+  methods: [GET]
+
+lzy_routing_put:
+  path: /put
+  defaults: { _controller: LzyRoutingBundle:Default:put }
+  methods: [PUT]
+
+lzy_routing_delete:
+  path: /delete
+  defaults: { _controller: LzyRoutingBundle:Default:delete }
+  methods: [DELETE]
