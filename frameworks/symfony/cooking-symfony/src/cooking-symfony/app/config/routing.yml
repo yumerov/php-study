@@ -1,3 +1,7 @@
+lzy_security_authentication:
+    resource: "@LzySecurityAuthenticationBundle/Resources/config/routing.yml"
+    prefix:   /security
+
 lzy_routing:
     resource: "@LzyRoutingBundle/Resources/config/routing.yml"
     prefix:   /routing
