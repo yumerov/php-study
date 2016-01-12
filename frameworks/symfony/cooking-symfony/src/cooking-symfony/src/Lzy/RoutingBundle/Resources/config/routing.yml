@@ -1,8 +1,15 @@
 lzy_routing_homepage:
-    path:     /
-    defaults: { _controller: LzyRoutingBundle:Default:index }
+  path: /
+  defaults: { _controller: LzyRoutingBundle:Default:index }
 
 lzy_routing_https:
-    path:     /https
-    defaults: { _controller: LzyRoutingBundle:Default:https }
-    schemes: [https]
+  path: /https
+  defaults: { _controller: LzyRoutingBundle:Default:https }
+  schemes: [https]
+
+lzy_routing_redirect:
+  path: /redirect
+  defaults:
+    _controller: FrameworkBundle:Redirect:redirect
+    route: lzy_routing_homepage
+    permanent: true
