@@ -9,6 +9,7 @@ imports:
     - { resource: "@LzyDoctrineBundle/Resources/config/services.yml" }
     - { resource: "@LzyEventBundle/Resources/config/services.yml" }
     - { resource: "@LzyFormBundle/Resources/config/services.yml" }
+    - { resource: "@LzyLoggerBundle/Resources/config/services.yml" }
 
 # Put parameters here that don't need to change on each machine where the app is deployed
 # http://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
@@ -92,3 +93,15 @@ services:
         arguments:
             - 'mysql:host=%database_host%;port=%database_port%;dbname=%database_name%'
             - { db_username: '%database_user%', db_password: '%database_password%' }
+    monolog.formatter.session_request:
+        class: Monolog\Formatter\LineFormatter
+        arguments:
+            - "[%%datetime%%] [%%extra.token%%] %%channel%%.%%level_name%%: %%message%% %%context%% %%extra%%\n"
+
+monolog:
+    handlers:
+        main:
+            type: stream
+            path: '%kernel.logs_dir%/%kernel.environment%.log'
+            level: debug
+            formatter: monolog.formatter.session_request
