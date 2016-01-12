@@ -25,6 +25,7 @@ class TaskType extends AbstractType {
   public function buildForm(FormBuilderInterface $builder, array $options) {
     $builder
       ->add('dueDate')
+      ->add('flag', FlagType::class, ['placeholder' => 'Choose a flag'])
       ->add('priority')
       ->add('task', TextType::class)
       ->add('tags', CollectionType::class, [

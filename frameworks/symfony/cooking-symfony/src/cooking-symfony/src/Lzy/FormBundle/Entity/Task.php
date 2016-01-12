@@ -12,6 +12,11 @@ class Task {
   protected $task;
 
   /**
+   * @var String
+   */
+  protected $flag;
+
+  /**
    * @var \DateTime
    */
   protected $dueDate;
@@ -36,6 +41,14 @@ class Task {
    */
   function getTask() {
     return $this->task;
+  }
+
+  function getFlag() {
+    return $this->flag;
+  }
+
+  function setFlag(String $flag) {
+    $this->flag = $flag;
   }
 
   /**
