@@ -28,3 +28,9 @@ lzy_routing_delete:
   path: /delete
   defaults: { _controller: LzyRoutingBundle:Default:delete }
   methods: [DELETE]
+
+lzy_routing_param:
+  path: /{_prefix}/param
+  defaults: { _controller: LzyRoutingBundle:Default:param }
+  requirements:
+    _prefix: '%lzy_routing_prefix%'

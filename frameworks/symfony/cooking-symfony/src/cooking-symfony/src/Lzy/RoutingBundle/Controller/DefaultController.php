@@ -14,18 +14,22 @@ class DefaultController extends Controller {
   public function httpsAction() {
     return new Response("secure response");
   }
-  
+
   public function getAction() {
     return new Response("only \"GET\" method allowed");
   }
 
-  
   public function putAction() {
     return new Response("only \"PUT\" method allowed");
   }
-  
-  
+
   public function deleteAction() {
     return new Response("only \"DELETE\" method allowed");
   }
+
+  public function paramAction($_prefix) {
+    return new Response('this action uses a route that uses a parameter from '
+      . 'parameters.yml; the prefix is ' . $_prefix);
+  }
+
 }
