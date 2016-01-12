@@ -2,6 +2,8 @@
 
 namespace Lzy\FormBundle\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
+
 class Task {
 
   /**
@@ -13,11 +15,21 @@ class Task {
    * @var \DateTime
    */
   protected $dueDate;
-  
+
   /**
    * @var integer
    */
   protected $priority;
+
+  /**
+   *
+   * @var \Doctrine\Common\Collections\ArrayCollection
+   */
+  protected $tags;
+
+  public function __construct() {
+    $this->tags = new ArrayCollection();
+  }
 
   /**
    * @return string
@@ -27,7 +39,7 @@ class Task {
   }
 
   /**
-   * @return \DateTime
+   * @return DateTime
    */
   function getDueDate() {
     return $this->dueDate;
@@ -35,7 +47,7 @@ class Task {
 
   /**
    * @param string $task
-   * @return \Lzy\FormBundle\Entity\Task
+   * @return Task
    */
   function setTask($task) {
     $this->task = $task;
@@ -44,18 +56,21 @@ class Task {
   }
 
   /**
-   * @param \DateTime $dueDate
-   * @return \Lzy\FormBundle\Entity\Task
+   * @param DateTime $dueDate
+   * @return Task
    */
-  function setDueDate(\DateTime $dueDate) {
+  function setDueDate(DateTime $dueDate) {
     $this->dueDate = $dueDate;
 
     return $this;
   }
-  
-  function getPriority()
-  {
-   return $this->priority;
+
+  function getPriority() {
+    return $this->priority;
+  }
+
+  public function getTags() {
+    return $this->tags;
   }
 
 }

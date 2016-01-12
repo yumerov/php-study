@@ -2,9 +2,10 @@
 
 namespace Lzy\FormBundle\Type;
 
-use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Form\FormEvent;
 use Symfony\Component\Form\FormEvents;
@@ -25,7 +26,11 @@ class TaskType extends AbstractType {
     $builder
       ->add('dueDate')
       ->add('priority')
-      ->add('task', TextType::class);
+      ->add('task', TextType::class)
+      ->add('tags', CollectionType::class, [
+        'entry_type' => TagType::class,
+        'allow_add' => TRUE,
+      ]);
 
     $builder->addEventListener(
       FormEvents::PRE_SET_DATA, [$this, 'dataPresetListener']);
