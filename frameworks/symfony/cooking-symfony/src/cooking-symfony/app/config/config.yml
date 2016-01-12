@@ -86,18 +86,6 @@ assetic:
                 - '@LzyAsseticBundle/Resources/public/js/vendor/jquery.js'
                 - '@LzyAsseticBundle/Resources/public/js/vendor/plugin.jquery.js'
 
-services:
-    session.handler.pdo:
-        class: Symfony\Component\HttpFoundation\Session\Storage\Handler\PdoSessionHandler
-        public: true
-        arguments:
-            - 'mysql:host=%database_host%;port=%database_port%;dbname=%database_name%'
-            - { db_username: '%database_user%', db_password: '%database_password%' }
-    monolog.formatter.session_request:
-        class: Monolog\Formatter\LineFormatter
-        arguments:
-            - "[%%datetime%%] [%%extra.token%%] %%channel%%.%%level_name%%: %%message%% %%context%% %%extra%%\n"
-
 monolog:
     handlers:
         main:
