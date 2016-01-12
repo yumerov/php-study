@@ -1,3 +1,7 @@
+lzy_routing:
+    resource: "@LzyRoutingBundle/Resources/config/routing.yml"
+    prefix:   /routing
+
 lzy_logger:
     resource: "@LzyLoggerBundle/Resources/config/routing.yml"
     prefix:   /logger
