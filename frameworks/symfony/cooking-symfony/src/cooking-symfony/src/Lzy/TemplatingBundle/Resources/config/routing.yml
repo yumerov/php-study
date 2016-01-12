@@ -1,0 +1,3 @@
+lzy_templating_homepage:
+    path:     /
+    defaults: { _controller: LzyTemplatingBundle:Default:index }

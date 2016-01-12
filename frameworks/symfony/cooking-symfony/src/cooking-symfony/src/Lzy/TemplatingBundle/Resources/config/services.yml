@@ -1,0 +1,4 @@
+services:
+#    lzy_templating.example:
+#        class: Lzy\TemplatingBundle\Example
+#        arguments: [@service_id, "plain_value", %parameter%]

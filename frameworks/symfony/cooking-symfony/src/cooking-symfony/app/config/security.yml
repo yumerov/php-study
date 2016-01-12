@@ -8,9 +8,8 @@ security:
         class: LzySecurityAuthenticationBundle:User
   firewalls:
     main:
-      pattern: ^/
-      http_basic: ~
-      provider: lzy_db_provider
-      form_login:
-        login_path: /security/login
-        check_path: /security/login_check
+      anonymous: ~
+    #   provider: lzy_db_provider
+    #   form_login:
+    #     login_path: /security/login
+    #     check_path: /security/login_check

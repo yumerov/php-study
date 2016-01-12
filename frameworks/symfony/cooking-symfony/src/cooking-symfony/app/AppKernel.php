@@ -26,6 +26,7 @@ class AppKernel extends Kernel
             new Lzy\LoggerBundle\LzyLoggerBundle(),
             new Lzy\RoutingBundle\LzyRoutingBundle(),
             new Lzy\SecurityAuthenticationBundle\LzySecurityAuthenticationBundle(),
+            new Lzy\TemplatingBundle\LzyTemplatingBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'), true)) {

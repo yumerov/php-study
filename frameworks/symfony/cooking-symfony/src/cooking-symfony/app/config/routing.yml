@@ -1,3 +1,7 @@
+lzy_templating:
+    resource: "@LzyTemplatingBundle/Resources/config/routing.yml"
+    prefix:   /templating
+
 lzy_security_authentication:
     resource: "@LzySecurityAuthenticationBundle/Resources/config/routing.yml"
     prefix:   /security
