@@ -1,20 +1,16 @@
-# To get started with security, check out the documentation:
-# http://symfony.com/doc/current/book/security.html
 security:
-
-    # http://symfony.com/doc/current/book/security.html#where-do-users-come-from-user-providers
-    providers:
-        in_memory:
-            memory: ~
-
-    firewalls:
-        # disables authentication for assets and the profiler, adapt it according to your needs
-        dev:
-            pattern: ^/(_(profiler|wdt)|css|images|js)/
-            security: false
-
-        main:
-            anonymous: ~
-            form_login:
-                login_path: /security/login
-                check_path: /security/login_check
+  encoders:
+    Lzy\SecurityAuthenticationBundle\Entity\User:
+        algorithm: bcrypt
+  providers:
+    lzy_db_provider:
+      entity:
+        class: LzySecurityAuthenticationBundle:User
+  firewalls:
+    main:
+      pattern: ^/
+      http_basic: ~
+      provider: lzy_db_provider
+      form_login:
+        login_path: /security/login
+        check_path: /security/login_check
