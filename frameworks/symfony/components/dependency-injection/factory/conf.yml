@@ -1,0 +1,16 @@
+parameters:
+  mailer.transport: "sendmail"
+  
+services:
+   mailer:
+     class: Mailer
+     arguments: ['%mailer.transport%']
+   newsletter_manager.factory:
+     class: NewsletterManagerFactory
+   newsletter_manager:
+     class: NewsletterManager
+     factory: ["@newsletter_manager.factory", "createNewsletterManager"]
+     arguments:
+       - "factory argument"
+     calls:
+       - [setMailer, ["@mailer"]]

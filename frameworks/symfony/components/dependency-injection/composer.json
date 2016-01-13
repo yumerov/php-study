@@ -1,0 +1,9 @@
+{
+  "name": "yumerov",
+  "require": {
+    "symfony/yaml": "2.8.1",
+    "symfony/config": "2.8.1",
+    "symfony/dependency-injection": "2.8.1",
+    "symfony/proxy-manager-bridge": "~2.3"
+  }
+}

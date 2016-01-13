@@ -1,0 +1,17 @@
+parameters:
+  mailer.transport: "sendmail"
+  
+services:
+  mailer:
+    class: Mailer
+    arguments: ['%mailer.transport%']
+  mail_manager:
+    abstract: true
+    calls:
+      - [setMailer, ['@mailer']]
+  newsletter_manager:
+    class: NewsletterManager
+    parent: mail_manager
+  greeting_card_manager:
+    class: GreetingCardManager
+    parent: mail_manager

@@ -1,0 +1,9 @@
+parameters:
+  mailer.transport: "sendmail"
+  
+services:
+   mailer:
+     class: Mailer
+     lazy: true
+     calls:
+        - [setTransport, ['%mailer.transport%']]
