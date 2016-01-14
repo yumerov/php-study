@@ -14,11 +14,9 @@ $stopwatch = new Stopwatch();
 $stopwatch->start(CORE_LOADING);
 echo "Started core loading\n";
 sleep(rand(1, 5));
+/** @var Symfony\Component\Stopwatch\StopwatchEvent */
 $event = $stopwatch->stop(CORE_LOADING);
 echo "Stop core loading\n";
-
-/** @var Symfony\Component\Stopwatch\StopwatchEvent */
-$event = $stopwatch->getEvent(CORE_LOADING);
 
 echo "Event:\n" .
   "  Category :{$event->getCategory()}\n" .
