@@ -1,0 +1,6 @@
+{
+    "require": {
+        "symfony/http-kernel": "2.8.1",
+        "symfony/routing": "2.8.1"
+    }
+}
