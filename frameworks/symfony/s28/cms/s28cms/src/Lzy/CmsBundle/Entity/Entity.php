@@ -1,0 +1,160 @@
+<?php
+
+namespace Lzy\CmsBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * @ORM\Entity(repositoryClass="Lzy\CmsBundle\Entity\EntityRepository")
+ * @ORM\Table(name="`entity`")
+ * @ORM\HasLifecycleCallbacks
+ */
+class Entity implements IEntity {
+
+  /**
+   * @ORM\Column(type="integer", name="`ID`")
+   * @ORM\Id
+   * @ORM\GeneratedValue(strategy="AUTO")
+   */
+  protected $id;
+
+  /**
+   * @ORM\Column(type="string", name="`slug`", unique=true, length=64)
+   */
+  protected $slug;
+
+  /**
+   * @var \DateTime $created
+   *
+   * @ORM\Column(type="datetime", name="`created_at`", nullable=true)
+   */
+  protected $created_at;
+
+  /**
+   * @var \DateTime $updated
+   * 
+   * @ORM\Column(type="datetime", name="`updated_at`", nullable=true)
+   */
+  protected $updated_at;
+
+  /**
+   * @ORM\Column(type="string", name="`type`", length=32)
+   */
+  protected $type;
+
+  /**
+   * Gets triggered only on insert
+   * 
+   * @ORM\PrePersist
+   */
+  public function onPrePersist() {
+    $this->created_at = new \DateTime("now");
+  }
+
+  /**
+   * Gets triggered every time on update
+   * 
+   * @ORM\PreUpdate
+   */
+  public function onPreUpdate() {
+    $this->updated_at = new \DateTime("now");
+  }
+
+  /**
+   * Get id
+   *
+   * @return integer
+   */
+  public function getId() {
+    return $this->id;
+  }
+
+  /**
+   * Set slug
+   *
+   * @param string $slug
+   *
+   * @return Entity
+   */
+  public function setSlug($slug) {
+    $this->slug = $slug;
+
+    return $this;
+  }
+
+  /**
+   * Get slug
+   *
+   * @return string
+   */
+  public function getSlug() {
+    return $this->slug;
+  }
+
+  /**
+   * Set createdAt
+   *
+   * @param \DateTime $createdAt
+   *
+   * @return Entity
+   */
+  public function setCreatedAt($createdAt) {
+    $this->created_at = $createdAt;
+
+    return $this;
+  }
+
+  /**
+   * Get createdAt
+   *
+   * @return \DateTime
+   */
+  public function getCreatedAt() {
+    return $this->created_at;
+  }
+
+  /**
+   * Set updatedAt
+   *
+   * @param \DateTime $updatedAt
+   *
+   * @return Entity
+   */
+  public function setUpdatedAt($updatedAt) {
+    $this->updated_at = $updatedAt;
+
+    return $this;
+  }
+
+  /**
+   * Get updatedAt
+   *
+   * @return \DateTime
+   */
+  public function getUpdatedAt() {
+    return $this->updated_at;
+  }
+
+  /**
+   * Set type
+   *
+   * @param string $type
+   *
+   * @return Entity
+   */
+  public function setType($type) {
+    $this->type = $type;
+
+    return $this;
+  }
+
+  /**
+   * Get type
+   *
+   * @return string
+   */
+  public function getType() {
+    return $this->type;
+  }
+
+}

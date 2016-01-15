@@ -1,4 +1,15 @@
 services:
-#    lzy_cms.example:
-#        class: Lzy\CmsBundle\Example
-#        arguments: [@service_id, "plain_value", %parameter%]
+  lzy.is:
+    class: Lzy\CmsBundle\Service\Is
+    arguments: []
+  entity.factory:
+    class: Lzy\CmsBundle\Service\EntityFactory
+    arguments: []
+    calls:
+      - ['setIs', ['@lzy.is']]
+      - ['setSlugify', ['@slugify']]
+  page.factory:
+    class: Lzy\CmsBundle\Service\PageFactory
+    arguments: []
+    calls:
+      - ['setIs', ['@lzy.is']]

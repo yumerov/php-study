@@ -2,6 +2,8 @@
 
 ## System
 
+* entities
+* entity repositories
 * dynamic routing
 
 ## Backend
