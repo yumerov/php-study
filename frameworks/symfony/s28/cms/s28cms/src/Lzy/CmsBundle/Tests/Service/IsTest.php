@@ -3,6 +3,7 @@
 namespace Lzy\CmsBundle\Tests\Service;
 
 use Lzy\CmsBundle\Tests\TestUsingContainer;
+use Lzy\CmsBundle\Service\Is;
 
 class IsTest extends TestUsingContainer {
 
@@ -13,7 +14,7 @@ class IsTest extends TestUsingContainer {
 
   public static function setUpBeforeClass() {
     parent::setUpBeforeClass();
-    self::$is = self::$container->get('lzy.is');
+    self::$is = self::$container->get(Is::NAME);
   }
 
   public function testCorrect() {

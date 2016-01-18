@@ -7,6 +7,8 @@ use \Lzy\CmsBundle\Entity\Page;
 
 class PageFactory extends BaseEntityFactory {
 
+  const NAME = 'cms.page.factory';
+  
   /**
    * @param \Lzy\CmsBundle\Entity\Entity $parent
    * @param string $title

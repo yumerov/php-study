@@ -3,59 +3,44 @@
 namespace Lzy\CmsBundle\Tests\Entity;
 
 use Lzy\CmsBundle\Exception\EntityNotFoundException;
+use Lzy\CmsBundle\Entity\Page;
 
 class EntityTest extends EntityTestBase {
 
   protected static $truncateTables = ["`entity`"];
-
-  /**
-   *
-   * @var Lzy\CmsBundle\Service\EntityFactory
-   */
-  protected static $entityFactory;
-
-  /**
-   *
-   * @var \Doctrine\ORM\EntityManagerInterface
-   */
-  protected static $entityManager;
-
-  public static function setUpBeforeClass() {
-    parent::setUpBeforeClass();
-    self::$entityFactory = self::$container->get('entity.factory');
-    self::$entityManager = self::$container->get('doctrine.orm.entity_manager');
-  }
+  
+  protected static $testData = [
+    'create' => [
+      'real' => ['slug' => '  hello, world!', 'type' => Page::TYPE],
+      'expected' => ['slug' => 'hello-world', 'type' => Page::TYPE],
+    ],
+    'fail' => [
+      'real' => ['slug' => 'hello--world', 'type' => Page::TYPE],
+      'expected' => ['slug' => 'hello--world', 'type' => Page::TYPE],
+    ],
+  ];
 
   /**
    * @before
    */
   public function beforeEachTest() {
-    self::truncateTables(self::$truncateTables);
-  }
-
-  protected function persistEntity($entity) {
-    self::$entityManager->persist($entity);
-    self::$entityManager->flush();
+    parent::beforeEachTest();
   }
 
   public function testCreate() {
-    $rawSlug = '  hello, world!';
-    $rawType = 'page';
-    $entity = self::$entityFactory->create($rawSlug, $rawType);
-
-    $this->persistEntity($entity);
-
-    $expectedSlug = 'hello-world';
-    $expectedType = 'page';
-    $foundEntity = self::$entityManager
-      ->getRepository("LzyCmsBundle:Entity")
-      ->findBySlug($expectedSlug);
+    $data = self::$testData['create'];
+    $entity = self::$entityFactory->create(
+      $data['real']['slug'], $data['real']['type']);
+    self::$entityManager->save($entity);
+    
+    $foundEntity = self::$entityManager->findBySlug($data['expected']['slug']);
 
     if (!$foundEntity) {
-      throw new EntityNotFoundException("No entity found with slug \"{$expectedSlug}\"");
+      throw new EntityNotFoundException(
+        "No entity found with slug \"{$data['expected']['slug']}\"");
     }
 
-    $this->assertEquals($rawType, $expectedType);
+    $this->assertEquals($data['real']['type'], $data['expected']['type']);
   }
 
   /**
@@ -63,23 +48,13 @@ class EntityTest extends EntityTestBase {
    * @expectedExceptionMessage No entity found with slug "hello--world".
    */
   public function testFail() {
-    $rawSlug = 'hello--world';
-    $rawType = 'page';
-    $entity = self::$entityFactory->create($rawSlug, $rawType);
+    $data = self::$testData['fail'];
+    $entity = self::$entityFactory->create(
+      $data['real']['slug'], $data['real']['type']);
 
-    $this->persistEntity($entity);
+    self::$entityManager->save($entity);
 
-    $expectedSlug = 'hello--world';
-    $expectedType = 'page';
-    $foundEntity = self::$entityManager
-      ->getRepository("LzyCmsBundle:Entity")
-      ->findBySlug($expectedSlug);
-
-    if (!$foundEntity) {
-      throw new EntityNotFoundException("No entity found with slug \"{$expectedSlug}\".");
-    }
-
-    $this->assertEquals($rawType, $expectedType);
+    $foundEntity = self::$entityManager->findBySlug($data['expected']['slug']);
   }
 
 }

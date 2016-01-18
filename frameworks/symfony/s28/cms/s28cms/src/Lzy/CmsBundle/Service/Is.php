@@ -4,6 +4,8 @@ namespace Lzy\CmsBundle\Service;
 
 class Is {
 
+  const NAME = 'lzy.is';
+  
   /**
    * 
    * @param string$string

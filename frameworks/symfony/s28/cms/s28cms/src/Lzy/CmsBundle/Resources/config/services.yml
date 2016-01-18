@@ -2,13 +2,20 @@ services:
   lzy.is:
     class: Lzy\CmsBundle\Service\Is
     arguments: []
-  entity.factory:
+  cms.entity.factory:
     class: Lzy\CmsBundle\Service\EntityFactory
     arguments: []
     calls:
       - ['setIs', ['@lzy.is']]
       - ['setSlugify', ['@slugify']]
-  page.factory:
+  cms.entity.manager:
+    class: Lzy\CmsBundle\Manager\EntityManager
+    arguments: []
+    calls:
+      - ['setEntitiyManager', ['@doctrine.orm.entity_manager']]
+      - ['setFactory', ['@cms.entity.factory']]
+      - ['setIs', ['@lzy.is']]
+  cms.page.factory:
     class: Lzy\CmsBundle\Service\PageFactory
     arguments: []
     calls:

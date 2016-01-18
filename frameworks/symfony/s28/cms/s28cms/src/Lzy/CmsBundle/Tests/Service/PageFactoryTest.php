@@ -4,6 +4,8 @@ namespace Lzy\CmsBundle\Tests\Service;
 
 use Lzy\CmsBundle\Entity\Page;
 use Lzy\CmsBundle\Tests\TestUsingContainer;
+use Lzy\CmsBundle\Service\EntityFactory;
+use Lzy\CmsBundle\Service\PageFactory;
 
 class PageFactoryTest extends TestUsingContainer {
 
@@ -21,8 +23,8 @@ class PageFactoryTest extends TestUsingContainer {
 
   public static function setUpBeforeClass() {
     parent::setUpBeforeClass();
-    self::$entityFactory = self::$container->get('entity.factory');
-    self::$pageFactory = self::$container->get('page.factory');
+    self::$entityFactory = self::$container->get(EntityFactory::NAME);
+    self::$pageFactory = self::$container->get(PageFactory::NAME);
   }
 
   private function createTestEntity() {

@@ -31,8 +31,8 @@ class Page implements IEntity {
   protected $content;
 
   /**
-   * @ORM\OneToOne(targetEntity="Entity")
-   * @ORM\JoinColumn(name="entity_id", referencedColumnName="id")
+   * @ORM\OneToOne(targetEntity="Entity", cascade={"persist"})
+   * @ORM\JoinColumn(name="entity_id", referencedColumnName="ID")
    */
   private $entity;
 

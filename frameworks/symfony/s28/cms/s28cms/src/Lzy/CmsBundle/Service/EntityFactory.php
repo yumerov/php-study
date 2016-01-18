@@ -8,6 +8,8 @@ use Lzy\CmsBundle\Entity\Page;
 
 class EntityFactory extends BaseEntityFactory {
 
+  const NAME = 'cms.entity.factory';
+  
   /**
    *
    * @var \Cocur\Slugify\Slugify

@@ -4,6 +4,7 @@ namespace Lzy\CmsBundle\Tests\Service;
 
 use Lzy\CmsBundle\Entity\Entity;
 use Lzy\CmsBundle\Tests\TestUsingContainer;
+use Lzy\CmsBundle\Service\EntityFactory;
 
 class EntityFactoryTest extends TestUsingContainer {
 
@@ -15,7 +16,7 @@ class EntityFactoryTest extends TestUsingContainer {
 
   public static function setUpBeforeClass() {
     parent::setUpBeforeClass();
-    self::$entityFactory = self::$container->get('entity.factory');
+    self::$entityFactory = self::$container->get(EntityFactory::NAME);
   }
 
   public function testCorrect() {
