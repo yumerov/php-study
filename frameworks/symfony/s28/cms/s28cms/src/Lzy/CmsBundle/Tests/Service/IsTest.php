@@ -2,7 +2,9 @@
 
 namespace Lzy\CmsBundle\Tests\Service;
 
-class IsTest extends TestBase {
+use Lzy\CmsBundle\Tests\TestUsingContainer;
+
+class IsTest extends TestUsingContainer {
 
   /**
    * @var Lzy\CmsBundle\Service\Is

@@ -3,8 +3,9 @@
 namespace Lzy\CmsBundle\Tests\Service;
 
 use Lzy\CmsBundle\Entity\Entity;
+use Lzy\CmsBundle\Tests\TestUsingContainer;
 
-class EntityFactoryTest extends TestBase {
+class EntityFactoryTest extends TestUsingContainer {
 
   /**
    *

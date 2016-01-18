@@ -1,8 +1,8 @@
 <?php
 
-namespace Lzy\CmsBundle\Tests\Service;
+namespace Lzy\CmsBundle\Tests;
 
-class TestBase extends \PHPUnit_Framework_TestCase {
+class TestUsingContainer extends \PHPUnit_Framework_TestCase {
 
   /**
    * @var Symfony\Component\DependencyInjection\ContainerInterface

@@ -2,43 +2,84 @@
 
 namespace Lzy\CmsBundle\Tests\Entity;
 
-class EntityTest extends \PHPUnit_Framework_TestCase {
+use Lzy\CmsBundle\Exception\EntityNotFoundException;
+
+class EntityTest extends EntityTestBase {
+
+  protected static $truncateTables = ["`entity`"];
 
   /**
-   * @var Symfony\Component\DependencyInjection\ContainerInterface
+   *
+   * @var Lzy\CmsBundle\Service\EntityFactory
    */
-  protected static $container;
+  protected static $entityFactory;
 
   /**
-   * @param array $tableNames Name of the tables which will be truncated.
-   * @param bool $cascade 
-   * @return void
+   *
+   * @var \Doctrine\ORM\EntityManagerInterface
    */
-  private static function truncateTables($tableNames = array(), $cascade = false) {
-    $connection = self::$container->get('doctrine.orm.entity_manager')->getConnection();
-    $platform = $connection->getDatabasePlatform();
-    $connection->executeQuery('SET FOREIGN_KEY_CHECKS = 0;');
-    foreach ($tableNames as $name) {
-      $connection->executeUpdate($platform->getTruncateTableSQL($name, $cascade));
-    }
-    $connection->executeQuery('SET FOREIGN_KEY_CHECKS = 1;');
-  }
+  protected static $entityManager;
 
   public static function setUpBeforeClass() {
-    $kernel = new \AppKernel("test", true);
-    $kernel->boot();
+    parent::setUpBeforeClass();
+    self::$entityFactory = self::$container->get('entity.factory');
+    self::$entityManager = self::$container->get('doctrine.orm.entity_manager');
+  }
 
-    self::$container = $kernel->getContainer();
-    self::truncateTables(["`entity`"]);
+  /**
+   * @before
+   */
+  public function beforeEachTest() {
+    self::truncateTables(self::$truncateTables);
+  }
+
+  protected function persistEntity($entity) {
+    self::$entityManager->persist($entity);
+    self::$entityManager->flush();
   }
 
   public function testCreate() {
-    $entity = new \Lzy\CmsBundle\Entity\Entity();
-    $entity->setSlug("hello_1")->setType("page_1");
+    $rawSlug = '  hello, world!';
+    $rawType = 'page';
+    $entity = self::$entityFactory->create($rawSlug, $rawType);
 
-    $entityManager = self::$container->get('doctrine.orm.entity_manager');
-    $entityManager->persist($entity);
-    $entityManager->flush();
+    $this->persistEntity($entity);
+
+    $expectedSlug = 'hello-world';
+    $expectedType = 'page';
+    $foundEntity = self::$entityManager
+      ->getRepository("LzyCmsBundle:Entity")
+      ->findBySlug($expectedSlug);
+
+    if (!$foundEntity) {
+      throw new EntityNotFoundException("No entity found with slug \"{$expectedSlug}\"");
+    }
+
+    $this->assertEquals($rawType, $expectedType);
+  }
+
+  /**
+   * @expectedException \Lzy\CmsBundle\Exception\EntityNotFoundException
+   * @expectedExceptionMessage No entity found with slug "hello--world".
+   */
+  public function testFail() {
+    $rawSlug = 'hello--world';
+    $rawType = 'page';
+    $entity = self::$entityFactory->create($rawSlug, $rawType);
+
+    $this->persistEntity($entity);
+
+    $expectedSlug = 'hello--world';
+    $expectedType = 'page';
+    $foundEntity = self::$entityManager
+      ->getRepository("LzyCmsBundle:Entity")
+      ->findBySlug($expectedSlug);
+
+    if (!$foundEntity) {
+      throw new EntityNotFoundException("No entity found with slug \"{$expectedSlug}\".");
+    }
+
+    $this->assertEquals($rawType, $expectedType);
   }
 
 }
