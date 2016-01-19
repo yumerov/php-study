@@ -3,6 +3,7 @@
 namespace Lzy\CmsBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass="Lzy\CmsBundle\Entity\EntityRepository")
@@ -10,6 +11,8 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\HasLifecycleCallbacks
  */
 class Entity implements IEntity {
+  
+  const NAME = 'LzyCmsBundle:Entity';
 
   /**
    * @ORM\Column(type="integer", name="`ID`")
@@ -20,6 +23,8 @@ class Entity implements IEntity {
 
   /**
    * @ORM\Column(type="string", name="`slug`", unique=true, length=64)
+   * @Assert\NotBlank()
+   * @Assert\NotNull()
    */
   protected $slug;
 
@@ -39,6 +44,8 @@ class Entity implements IEntity {
 
   /**
    * @ORM\Column(type="string", name="`type`", length=32)
+   * @Assert\NotBlank()
+   * @Assert\NotNull()
    */
   protected $type;
 

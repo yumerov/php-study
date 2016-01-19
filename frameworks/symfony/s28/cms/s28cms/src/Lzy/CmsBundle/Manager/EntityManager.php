@@ -19,20 +19,41 @@ class EntityManager extends BaseManager {
   public function setFactory(EntityFactory $factory) {
     $this->factory = $factory;
   }
+  
+  /**
+   * 
+   * @param string $slug
+   * @param string $type
+   * @throws \InvalidArgumentException
+   * @return \Lzy\CmsBundle\Entity\Entity;
+   * 
+   * @see \Lzy\CmsBundle\Service\EntityFactory
+   */
+  public function create($slug, $type) {
+    return $this->factory->create($slug, $type);
+  }
 
+  /**
+   * @param \Lzy\CmsBundle\Entity\Entity $entity
+   * @return boolean Returns true, if everything is ok
+   */
   public function save(Entity $entity) {
-    $this->entityManager->persist($entity);
-    $this->entityManager->flush();
+    $this->getEntityManager()->persist($entity);
+    $this->getEntityManager()->flush();
+    return true;
   }
 
   /**
    * @param string $slug
    * @return \Lzy\CmsBundle\Entity\Entity
    */
-  public function findBySlug($slug) {
+  public function findOneBySlug($slug) {
     $this->is->nonEmptyString($slug, 'slug');
 
-    $entity = $this->entityManager->getRepository("LzyCmsBundle:Entity")->findBySlug($slug);
+    $entity = $this
+      ->entityManager
+      ->getRepository(Entity::NAME)
+      ->findOneBySlug($slug);
 
     if (!$entity) {
       throw new EntityNotFoundException(

@@ -29,23 +29,23 @@ class EntityFactoryTest extends TestUsingContainer {
 
   /**
    * @expectedException \InvalidArgumentException
-   * @expectedExceptionMessage The argument 'slug' cannot be empty or only white spaces.
+   * @expectedExceptionMessage Entity slug cannot be empty or only white spaces.
    */
   public function testEmptySlug() {
     $slug = '';
     $type = 'page';
 
-    $entity = self::$entityFactory->create($slug, $type);
+    self::$entityFactory->create($slug, $type);
   }
 
   /**
    * @expectedException \InvalidArgumentException
-   * @expectedExceptionMessage The argument 'type' cannot be empty or only white spaces.
+   * @expectedExceptionMessage Entity type cannot be empty or only white spaces.
    */
   public function testEmptyType() {
     $slug = 'slug';
     $type = '';
-    $entity = self::$entityFactory->create($slug, $type);
+    self::$entityFactory->create($slug, $type);
   }
 
   public function testFull() {

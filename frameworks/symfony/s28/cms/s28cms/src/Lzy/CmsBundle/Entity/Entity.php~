@@ -3,6 +3,7 @@
 namespace Lzy\CmsBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass="Lzy\CmsBundle\Entity\EntityRepository")
@@ -20,13 +21,14 @@ class Entity implements IEntity {
 
   /**
    * @ORM\Column(type="string", name="`slug`", unique=true, length=64)
+   * @Assert\NotBlank
    */
   protected $slug;
 
   /**
    * @var \DateTime $created
    *
-   * @ORM\Column(type="datetime", name="`created_at`")
+   * @ORM\Column(type="datetime", name="`created_at`", nullable=true)
    */
   protected $created_at;
 
@@ -39,6 +41,7 @@ class Entity implements IEntity {
 
   /**
    * @ORM\Column(type="string", name="`type`", length=32)
+   * @Assert\NotBlank
    */
   protected $type;
 
@@ -48,7 +51,7 @@ class Entity implements IEntity {
    * @ORM\PrePersist
    */
   public function onPrePersist() {
-    $this->created = new \DateTime("now");
+    $this->created_at = new \DateTime("now");
   }
 
   /**
@@ -57,7 +60,7 @@ class Entity implements IEntity {
    * @ORM\PreUpdate
    */
   public function onPreUpdate() {
-    $this->updated = new \DateTime("now");
+    $this->updated_at = new \DateTime("now");
   }
 
   /**
@@ -133,28 +136,6 @@ class Entity implements IEntity {
    */
   public function getUpdatedAt() {
     return $this->updated_at;
-  }
-
-  /**
-   * Set subEntityId
-   *
-   * @param integer $subEntityId
-   *
-   * @return Entity
-   */
-  public function setSubEntityId($subEntityId) {
-    $this->sub_entity_id = $subEntityId;
-
-    return $this;
-  }
-
-  /**
-   * Get subEntityId
-   *
-   * @return integer
-   */
-  public function getSubEntityId() {
-    return $this->sub_entity_id;
   }
 
   /**

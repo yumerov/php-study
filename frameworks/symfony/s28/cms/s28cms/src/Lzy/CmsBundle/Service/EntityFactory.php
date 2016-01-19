@@ -9,7 +9,7 @@ use Lzy\CmsBundle\Entity\Page;
 class EntityFactory extends BaseEntityFactory {
 
   const NAME = 'cms.entity.factory';
-  
+
   /**
    *
    * @var \Cocur\Slugify\Slugify
@@ -32,15 +32,25 @@ class EntityFactory extends BaseEntityFactory {
    * @return \Lzy\CmsBundle\Entity\Entity
    */
   public function create($slug, $type) {
-    $this->is->nonEmptyString($slug, 'slug');
+    try {
+      $this->is->nonEmptyString($slug, 'slug');
+    } catch (\InvalidArgumentException $ex) {
+      throw new \InvalidArgumentException(
+      "Entity slug cannot be empty or only white spaces.", NULL, $ex);
+    }
 
     $slugifiedSlug = $this->slugify->slugify($slug);
 
-    $this->is->nonEmptyString($type, 'type');
+    try {
+      $this->is->nonEmptyString($type, 'type');
+    } catch (\InvalidArgumentException $ex) {
+      throw new \InvalidArgumentException(
+      "Entity type cannot be empty or only white spaces.", NULL, $ex);
+    }
 
     $entity = new Entity();
     $entity->setSlug($slugifiedSlug);
-    $entity->setType(Page::TYPE);
+    $entity->setType($type);
 
     return $entity;
   }

@@ -21,6 +21,16 @@ class BaseManager {
     $this->entityManager = $manager;
   }
 
+  protected function getEntityManager() {
+    if (!$this->entityManager->isOpen()) {
+      $this->entityManager = $this->entityManager->create(
+        $this->entityManager->getConnection(),
+        $this->entityManager->getConfiguration());
+    }
+
+    return $this->entityManager;
+  }
+
   public function setIs(Is $is) {
     $this->is = $is;
   }
