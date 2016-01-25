@@ -7,6 +7,11 @@ use Lzy\CmsCoreBundle\Tests\TestBase;
 class RepositoryTestBase extends TestBase {
 
   /**
+   * @var \Doctrine\ORM\EntityManager
+   */
+  protected static $em;
+
+  /**
    * @param array $tableNames Name of the tables which will be truncated.
    * @param bool $cascade 
    * @return void
@@ -21,12 +26,18 @@ class RepositoryTestBase extends TestBase {
     $connection->executeQuery('SET FOREIGN_KEY_CHECKS = 1;');
   }
 
+  public static function setUpBeforeClass() {
+    parent::setUpBeforeClass();
+    self::$em = self::$container->get('doctrine')->getManager();
+  }
+
   public function beforeEachTest() {
     self::truncateTables(static::$truncateTables);
   }
 
   public static function tearDownAfterClass() {
     self::truncateTables(static::$truncateTables);
+    self::$em->close();
   }
 
 }
