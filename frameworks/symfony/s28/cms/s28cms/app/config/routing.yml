@@ -1,3 +1,7 @@
+lzy_cms_core:
+    resource: "@LzyCmsCoreBundle/Resources/config/routing.yml"
+    prefix:   /
+
 lzy_cms:
     resource: "@LzyCmsBundle/Resources/config/routing.yml"
     prefix:   /

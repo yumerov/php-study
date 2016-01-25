@@ -16,7 +16,8 @@ class AppKernel extends Kernel {
       new Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle(),
       new Cocur\Slugify\Bridge\Symfony\CocurSlugifyBundle(),
       new Lzy\CmsBundle\LzyCmsBundle(),
-    );
+            new Lzy\CmsCoreBundle\LzyCmsCoreBundle(),
+        );
 
     if (in_array($this->getEnvironment(), array('dev', 'test'), true)) {
       $bundles[] = new Symfony\Bundle\DebugBundle\DebugBundle();

@@ -1,0 +1,24 @@
+services:
+  cms.core.validator:
+    class: Lzy\CmsCoreBundle\Service\Validator
+    arguments: []
+    calls:
+      - ['setValidator', ['@validator']]
+  cms.core.root.factory:
+    class: Lzy\CmsCoreBundle\Factory\RootFactory
+    arguments: []
+    calls:
+      - ['setValidator', ['@cms.core.validator']]
+      - ['setSlugify', ['@slugify']]
+  cms.core.root.manager:
+    class: Lzy\CmsCoreBundle\Manager\RootManager
+    arguments: []
+    calls:
+      - ['setEntityManager', ['@doctrine.orm.entity_manager']]
+      - ['setValidator', ['@cms.core.validator']]
+      - ['setSlugify', ['@slugify']]
+  cms.core.page.factory:
+    class: Lzy\CmsCoreBundle\Factory\PageFactory
+    arguments: []
+    calls:
+      - ['setValidator', ['@cms.core.validator']]
