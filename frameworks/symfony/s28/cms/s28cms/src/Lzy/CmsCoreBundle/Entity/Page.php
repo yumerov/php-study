@@ -12,6 +12,8 @@ use Lzy\CmsCoreBundle\Entity\Root;
 class Page implements ComponentInterface {
 
   const TYPE = 'page';
+  
+  const NAME = 'LzyCmsCoreBundle:Page';
 
   /**
    * @ORM\Column(type="integer", name="`ID`")
@@ -36,6 +38,17 @@ class Page implements ComponentInterface {
    * @ORM\JoinColumn(name="root_id", referencedColumnName="ID")
    */
   private $root;
+  
+  /**
+   * @param Root $root
+   * @param string $title
+   * @param string $content
+   */
+  public function __construct(Root $root = NULL, $title = '', $content = '') {
+    $this->root = $root;
+    $this->title = $title;
+    $this->content = $content;
+  }
 
   /**
    * @return string

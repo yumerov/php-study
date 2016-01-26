@@ -3,6 +3,8 @@
 namespace Lzy\CmsCoreBundle\Tests\Repository;
 
 use Lzy\CmsCoreBundle\Tests\TestBase;
+use Lzy\CmsCoreBundle\Entity\RootRepository;
+use Lzy\CmsCoreBundle\Entity\Root;
 
 class RepositoryTestBase extends TestBase {
 
@@ -10,6 +12,9 @@ class RepositoryTestBase extends TestBase {
    * @var \Doctrine\ORM\EntityManager
    */
   protected static $em;
+
+  /** @var RootRepository */
+  protected static $rootRepository;
 
   /**
    * @param array $tableNames Name of the tables which will be truncated.
@@ -21,7 +26,8 @@ class RepositoryTestBase extends TestBase {
     $platform = $connection->getDatabasePlatform();
     $connection->executeQuery('SET FOREIGN_KEY_CHECKS = 0;');
     foreach ($tableNames as $name) {
-      $connection->executeUpdate($platform->getTruncateTableSQL($name, $cascade));
+      $query = $platform->getTruncateTableSQL($name, $cascade);
+      $connection->executeUpdate($query);
     }
     $connection->executeQuery('SET FOREIGN_KEY_CHECKS = 1;');
   }
@@ -33,6 +39,7 @@ class RepositoryTestBase extends TestBase {
 
   public function beforeEachTest() {
     self::truncateTables(static::$truncateTables);
+    self::$rootRepository = self::$em->getRepository(Root::NAME);
   }
 
   public static function tearDownAfterClass() {

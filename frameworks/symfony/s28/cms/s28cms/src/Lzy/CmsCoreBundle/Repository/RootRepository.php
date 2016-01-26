@@ -15,7 +15,8 @@ class RootRepository extends EntityRepository implements ComponentRepositoryInte
     $root = parent::findOneBySlug($slug);
 
     if (!$root) {
-      throw new RootNotFoundException("Cannot find root with slug \"{$slug}\".");
+      $message = "Cannot find root with slug \"{$slug}\".";
+      throw new RootNotFoundException($message);
     }
     return $root;
   }
