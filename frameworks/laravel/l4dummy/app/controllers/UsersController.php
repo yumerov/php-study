@@ -19,7 +19,12 @@ class UsersController extends \BaseController {
   }
 
   public function store () {
-  	return 'implement user storing logic'
+    $user = new User();
+    $user->username = Input::get('username');
+    $user->password = Hash::make(Input::get('password'));
+    $user->save();
+
+  	return Redirect::route('users.index');
   }
   
 }
