@@ -16,4 +16,6 @@
     <strong>no users</strong>
   @endif
   </ul>
+
+  {{ link_to("/users/create", "Create") }}
 @stop

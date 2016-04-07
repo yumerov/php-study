@@ -15,7 +15,11 @@ class UsersController extends \BaseController {
   }
 
   public function create () {
-  	return "user create form action"
+  	return View::make('rest.create');
+  }
+
+  public function store () {
+  	return 'implement user storing logic'
   }
   
 }
