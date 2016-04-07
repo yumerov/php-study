@@ -1,17 +1,19 @@
 <?php
 
-Route::get('/users', 'UsersController@index');
+Route::resource('users', 'UsersController');
 
-Route::get('/users/orm', 'OrmController@all');
+// Route::get('/users', 'UsersController@index');
 
-Route::get('/users/orm/find', 'OrmController@find');
+// Route::get('/users/orm', 'OrmController@all');
 
-Route::get('/users/orm/create', 'OrmController@create');
+// Route::get('/users/orm/find', 'OrmController@find');
 
-Route::get('/users/orm/update', 'OrmController@update');
+// Route::get('/users/orm/create', 'OrmController@create');
 
-Route::get('/users/orm/order', 'OrmController@order');
+// Route::get('/users/orm/update', 'OrmController@update');
 
-Route::get('/blade/user/{id}', 'BladeController@user');
+// Route::get('/users/orm/order', 'OrmController@order');
 
-Route::get('/blade/users', 'BladeController@users');
+// Route::get('/blade/user/{id}', 'BladeController@user');
+
+// Route::get('/blade/users', 'BladeController@users');
