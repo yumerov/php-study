@@ -19,12 +19,20 @@ class UsersController extends \BaseController {
   }
 
   public function store () {
-    $user = new User();
-    $user->username = Input::get('username');
-    $user->password = Hash::make(Input::get('password'));
-    $user->save();
+    $data = Input::all();
 
-  	return Redirect::route('users.index');
+    if (User::isValid($data)) {
+      $user = new User();
+      $user->username = Input::get('username');
+      $user->password = Hash::make(Input::get('password'));
+      $user->save();
+
+      $response = Redirect::route('users.index');
+    } else {
+      $response = Redirect::back()->withInputs($data)->withErrors(User::$messages);
+    }
+
+    return $response;
   }
   
 }
