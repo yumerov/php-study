@@ -99,3 +99,10 @@ Route::get('/responses/basic/redirects', function () {
   # return Redirect::route('named.route', ['param' => 'value']);
   # return Redirect::action('EntityController@action', ['param' => 'value'])
 });
+
+# views
+
+Route::get('/responses/views', function () {
+  return View::make('greeting', ['name' => 'Batman']);
+  # return View::make('greeting')->with('name', 'Batman');
+});
