@@ -106,3 +106,7 @@ Route::get('/responses/views', function () {
   return View::make('greeting', ['name' => 'Batman']);
   # return View::make('greeting')->with('name', 'Batman');
 });
+
+Route::get('/controller/basic/{id}', 'BasicController@show');
+
+Route::resource('resource', 'ResourceController');
