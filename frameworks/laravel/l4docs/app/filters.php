@@ -94,3 +94,9 @@ Route::filter('old', function() {
   	return ['success' => false, 'message' => 'too young.'];
   }
 });
+
+Route::filter('age', function($route, $request, $value) {
+  if (Input::get('age') < $value) {
+  	return ['success' => false, 'message' => 'too young.'];
+  }
+});

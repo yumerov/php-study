@@ -30,6 +30,11 @@ Route::get('/routing/params/regex/{name}', function ($name) { return "user: {$na
 # filters
 
 Route::post('/routing/filters', [
-	'before' => 'old',
-	function () { return ['success' => true, 'message' => 'congrats, you are over 65.']; }
+  'before' => 'old',
+  function () { return ['success' => true, 'message' => 'congrats, you are over 65.']; }
+]);
+
+Route::post('/routing/filters/params', [
+  'before' => 'age:115',
+  function () { return ['success' => true, 'message' => 'congrats, you are over 115.']; }
 ]);
