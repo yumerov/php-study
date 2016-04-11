@@ -47,3 +47,10 @@ Route::get('/routing/named', [
 ]);
 
 # Route::get('/routing/named', array('as' => 'routing.named', 'uses' => 'RoutingController@named'));
+
+# route group
+
+Route::group(['before' => 'old'], function () {
+  Route::post('/routing/group/before/1', function () { return '/routing/group/before/1'; });
+  Route::post('/routing/group/before/2', function () { return '/routing/group/before/2'; });
+});
