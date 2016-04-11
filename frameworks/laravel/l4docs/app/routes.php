@@ -71,3 +71,15 @@ Route::get('/input', function () {
 
   return $response;
 });
+
+Route::get('/requests/cookie', function () {
+  # reading cooking  
+  $get = Cookie::get('lzy-laravel');
+
+  $response = Response::make('Hello world');
+  $cookie = Cookie::make('lzy-cookie', 'something random', 5);
+  # $cookie = Cookie::forever('lzy-cookie', 'something random');
+  $response->withCookie($cookie); # sets teh cookie to current response
+
+  return $response;
+});
