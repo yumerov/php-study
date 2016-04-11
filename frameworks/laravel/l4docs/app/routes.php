@@ -59,3 +59,15 @@ Route::group(['prefix' => 'prefix'], function() {
   Route::get('/routing/prefix/1', function () { return '/routing/prefix/1'; });
   Route::get('/routing/prefix/2', function () { return '/routing/prefix/2'; });
 });
+
+# input
+
+Route::get('/input', function () {
+  $response = [];
+
+  $response['name'] = Input::get('name', '#default');
+  $response['has age?'] = Input::has('age');
+  $response['all'] = Input::all();
+
+  return $response;
+});
