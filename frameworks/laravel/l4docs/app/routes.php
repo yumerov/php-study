@@ -54,3 +54,8 @@ Route::group(['before' => 'old'], function () {
   Route::post('/routing/group/before/1', function () { return '/routing/group/before/1'; });
   Route::post('/routing/group/before/2', function () { return '/routing/group/before/2'; });
 });
+
+Route::group(['prefix' => 'prefix'], function() {
+  Route::get('/routing/prefix/1', function () { return '/routing/prefix/1'; });
+  Route::get('/routing/prefix/2', function () { return '/routing/prefix/2'; });
+});
