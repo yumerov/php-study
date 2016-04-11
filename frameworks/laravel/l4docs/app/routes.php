@@ -38,3 +38,12 @@ Route::post('/routing/filters/params', [
   'before' => 'age:115',
   function () { return ['success' => true, 'message' => 'congrats, you are over 115.']; }
 ]);
+
+# named routes
+
+Route::get('/routing/named', [
+  'as' => 'routing.named',
+  function () { return 'a named route'; }
+]);
+
+# Route::get('/routing/named', array('as' => 'routing.named', 'uses' => 'RoutingController@named'));
