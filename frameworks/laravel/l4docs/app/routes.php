@@ -83,3 +83,19 @@ Route::get('/requests/cookie', function () {
 
   return $response;
 });
+
+# responses
+
+Route::get('/responses/basic/string', function () { return 'String response'; });
+Route::get('/responses/basic/custom', function () {
+  $response = Response::make('object response', 404);
+  $response->header('Content-Type', 'text/plain');
+
+  return 'String response';
+});
+Route::get('/responses/basic/redirects', function () {
+  # return Redirect::to('/some/path');
+  # return Redirect::to('/some/path')->with('message', 'Login failed.');
+  # return Redirect::route('named.route', ['param' => 'value']);
+  # return Redirect::action('EntityController@action', ['param' => 'value'])
+});
