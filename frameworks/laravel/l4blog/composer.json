@@ -5,10 +5,15 @@
 	"license": "MIT",
 	"require": {
 		"laravel/framework": "4.2.*",
-		"zizaco/entrust": "1.2.*"
+		"zizaco/entrust": "1.2.*",
+		"zizaco/confide": "~4.0",
+		"cviebrock/eloquent-sluggable": "2.*",
+		"cviebrock/eloquent-taggable": "0.*",
+		"frozennode/administrator": "4.*"
 	},
 	"require-dev": {
-		"way/generators": "~2.0"
+		"way/generators": "~2.0",
+		"fzaninotto/faker": "1.4.*"
 	},
 	"autoload": {
 		"classmap": [
