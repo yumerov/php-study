@@ -1,26 +1,27 @@
 <?php
 
-use Illuminate\Auth\UserTrait;
-use Illuminate\Auth\UserInterface;
-use Illuminate\Auth\Reminders\RemindableTrait;
-use Illuminate\Auth\Reminders\RemindableInterface;
+use Zizaco\Confide\ConfideUser;
+use Zizaco\Confide\ConfideUserInterface;
 
-class User extends Eloquent implements UserInterface, RemindableInterface {
+use Zizaco\Entrust\HasRole;
 
-	use UserTrait, RemindableTrait;
+class User extends Eloquent implements ConfideUserInterface {
 
-	/**
-	 * The database table used by the model.
-	 *
-	 * @var string
-	 */
-	protected $table = 'users';
+  use ConfideUser;
+  use HasRole;
 
-	/**
-	 * The attributes excluded from the model's JSON form.
-	 *
-	 * @var array
-	 */
-	protected $hidden = array('password', 'remember_token');
+  protected $fillable = ['display_name'];
+
+  public function posts() {
+    return $this->hasMany('Post');
+  }
+
+  public function comments() {
+    return $this->hasMany('Comment');
+  }
+
+  public function getDisplayNameAttribute($value) {
+    return $value ?: $this->username;
+  }
 
 }
