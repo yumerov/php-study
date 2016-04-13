@@ -1,16 +1,17 @@
 <?php
 
-class Post extends \Eloquent {
+class Post extends \Eloquent
+{
 
-	use SoftDeletingTrait;
+    use SoftDeletingTrait;
 
-	protected $dates = ['deleted_at'];
+    protected $dates = ['deleted_at'];
 
-  public static $rules = [
-    'title' => 'required|min:3',
-    'body' => 'required|min:3',
-  ];
+    public static $rules = [
+        'title' => 'required|min:3',
+        'body' => 'required|min:3',
+    ];
 
-  protected $fillable = ['title', 'body',];
+    protected $fillable = ['title', 'body'];
 
 }

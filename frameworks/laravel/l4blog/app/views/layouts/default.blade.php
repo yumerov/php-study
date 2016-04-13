@@ -29,7 +29,7 @@
   <div class="container">
     <div class="blog-header">
       <h1 class="blog-title">{{ $blogTitle }}</h1>
-      <p class="lead blog-description">The official example template of creating a blog with Bootstrap.</p>
+      <p class="lead blog-description">Dummy blog cms based on Laravel 4.</p>
     </div>
 
     <div class="row">

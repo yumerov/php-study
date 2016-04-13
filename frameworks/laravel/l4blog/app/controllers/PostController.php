@@ -1,109 +1,112 @@
 <?php
 
-class PostController extends \BaseController {
+class PostController extends \BaseController
+{
 
-  /**
-   * Display a listing of the resource.
-   *
-   * @return Response
-   */
-  public function index() {
-    return View::make('posts.index');
-  }
-
-
-  /**
-   * Show the form for creating a new resource.
-   *
-   * @return Response
-   */
-  public function create() {
-    return View::make('posts.create');
-  }
-
-  /**
-   * Store a newly created resource in storage.
-   *
-   * @return Response
-   */
-  public function store() {
-    $data = Input::all();
-    $validator = Validator::make($data, Post::$rules);
-
-    if ($validator->fails()) {
-      $response = Redirect::route('posts.create')
-        ->withErrors($validator)
-        ->withInput();
-    } else {
-      $post = Post::create($data);
-      $response = Redirect::route('posts.show', ['posts' => $post->id]);
+    /**
+     * Display a listing of the resource.
+     *
+     * @return Response
+     */
+    public function index()
+    {
+        return View::make('posts.index');
     }
 
-    return $response;
-  }
-
-
-  /**
-   * Display the specified resource.
-   *
-   * @param  int  $id
-   * @return Response
-   */
-  public function show($id) {
-    $post = Post::findOrFail($id);
-    return View::make('posts.show', compact('post'));
-  }
-
-
-  /**
-   * Show the form for editing the specified resource.
-   *
-   * @param  int  $id
-   * @return Response
-   */
-  public function edit($id) {
-    $post = Post::findOrFail($id);
-    return View::make('posts.edit', compact('post'));
-  }
-
-
-  /**
-   * Update the specified resource in storage.
-   *
-   * @param  int  $id
-   * @return Response
-   */
-  public function update($id) {
-    $post = Post::findOrFail($id);
-
-    $data = Input::all();
-    $validator = Validator::make($data, Post::$rules);
-
-    if ($validator->fails()) {
-      $response = Redirect::route('posts.edit', compact('id'))
-        ->withErrors($validator)
-        ->withInput();
-    } else {
-      $post = $post->update($data);
-      $response = Redirect::route('posts.edit', ['posts' => $id])
-        ->with('success', 'The post is updated successfully.');
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return Response
+     */
+    public function create()
+    {
+        return View::make('posts.create');
     }
 
-    return $response;
-  }
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @return Response
+     */
+    public function store()
+    {
+        $data = Input::all();
+        $validator = Validator::make($data, Post::$rules);
 
+        if ($validator->fails()) {
+            $response = Redirect::route('posts.create')
+                ->withErrors($validator)
+                ->withInput();
+        } else {
+            $post = Post::create($data);
+            $response = Redirect::route('posts.show', ['posts' => $post->id]);
+        }
 
-  /**
-   * Remove the specified resource from storage.
-   *
-   * @param  int  $id
-   * @return Response
-   */
-  public function destroy($id) {
-    $post = Post::findOrFail($id);
-    Post::destroy($id);
-    return Redirect::route('posts.index')->with('message', "Post with id {$id} is deleted successfully.");
-  }
+        return $response;
+    }
 
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return Response
+     */
+    public function show($id)
+    {
+        $post = Post::findOrFail($id);
+        return View::make('posts.show', compact('post'));
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return Response
+     */
+    public function edit($id)
+    {
+        $post = Post::findOrFail($id);
+        return View::make('posts.edit', compact('post'));
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  int  $id
+     * @return Response
+     */
+    public function update($id)
+    {
+        $post = Post::findOrFail($id);
+
+        $data = Input::all();
+        $validator = Validator::make($data, Post::$rules);
+
+        if ($validator->fails()) {
+            $response = Redirect::route('posts.edit', compact('id'))
+                ->withErrors($validator)
+                ->withInput();
+        } else {
+            $post = $post->update($data);
+            $response = Redirect::route('posts.edit', ['posts' => $id])
+                ->with('success', 'The post is updated successfully.');
+        }
+
+        return $response;
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return Response
+     */
+    public function destroy($id)
+    {
+        $post = Post::findOrFail($id);
+        Post::destroy($id);
+        return Redirect::route('posts.index')->with(
+            'message', "Post with id {$id} is deleted successfully.");
+    }
 
 }
