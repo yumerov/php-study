@@ -63,6 +63,10 @@
     </div><!-- /.row -->
   </div><!-- /.container -->
 
+  <footer class="blog-footer">
+    <p>Basic blog platform build with Laravel 4 and Bootstrap 3.</p>
+  </footer>
+
   <script src="/js/jquery.min.js"></script>
   <script src="/js/bootstrap.min.js"></script>
 </body>
