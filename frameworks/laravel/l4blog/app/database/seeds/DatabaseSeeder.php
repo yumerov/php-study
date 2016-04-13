@@ -7,6 +7,7 @@ class DatabaseSeeder extends Seeder
      * @var array
      */
     protected $tables = [
+        'categories',
         'posts',
     ];
 
@@ -14,6 +15,7 @@ class DatabaseSeeder extends Seeder
      * @var array
      */
     protected $seeders = [
+        'CategoriesTableSeeder',
         'PostsTableSeeder',
     ];
 
