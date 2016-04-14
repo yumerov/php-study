@@ -2,7 +2,7 @@
 
 @section('page.main')
 	<article class="blog-post">
-	  <h2 class="blog-post-title">Update the post</h2>
+	  <h2 class="blog-post-title">Edit the post</h2>
 
 	  @if (Session::has('success'))
 	  <div class="alert alert-success" role="alert">

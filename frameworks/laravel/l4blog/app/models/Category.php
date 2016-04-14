@@ -9,6 +9,11 @@ class Category extends \Eloquent
 
     protected $fillable = ['name', 'description'];
 
+    public static $rules = [
+        'name' => 'required|min:3',
+        'description' => 'min:3',
+    ];
+
     public function posts()
     {
         return $this->hasMany('Post');

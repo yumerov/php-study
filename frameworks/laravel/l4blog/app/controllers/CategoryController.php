@@ -4,23 +4,13 @@ class CategoryController extends \BaseController
 {
 
     /**
-     * Display a listing of the resource.
-     *
-     * @return Response
-     */
-    public function index()
-    {
-        //
-    }
-
-    /**
      * Show the form for creating a new resource.
      *
      * @return Response
      */
     public function create()
     {
-        //
+        return View::make('categories.create');
     }
 
     /**
@@ -30,7 +20,19 @@ class CategoryController extends \BaseController
      */
     public function store()
     {
-        //
+        $data = Input::all();
+        $validator = Validator::make($data, Category::$rules);
+
+        if ($validator->fails()) {
+            $response = Redirect::route('categories.create')
+                ->withErrors($validator)
+                ->withInput();
+        } else {
+            $category = Category::create($data);
+            $response = Redirect::route('categories.show', $category->id);
+        }
+
+        return $response;
     }
 
     /**
@@ -41,7 +43,8 @@ class CategoryController extends \BaseController
      */
     public function show($id)
     {
-        //
+        $category = Category::findOrFail($id);
+        return View::make('categories.show', compact('category'));
     }
 
     /**
@@ -52,7 +55,8 @@ class CategoryController extends \BaseController
      */
     public function edit($id)
     {
-        //
+        $category = Category::findOrFail($id);
+        return View::make('categories.edit', compact('category'));
     }
 
     /**
@@ -63,7 +67,23 @@ class CategoryController extends \BaseController
      */
     public function update($id)
     {
-        //
+
+        $category = Category::findOrFail($id);
+
+        $data = Input::all();
+        $validator = Validator::make($data, Category::$rules);
+
+        if ($validator->fails()) {
+            $response = Redirect::route('categories.edit', $id)
+                ->withErrors($validator)
+                ->withInput();
+        } else {
+            $category = $category->update($data);
+            $response = Redirect::route('categories.edit', $id)
+                ->with('success', 'The category is updated successfully.');
+        }
+
+        return $response;
     }
 
     /**
@@ -74,7 +94,10 @@ class CategoryController extends \BaseController
      */
     public function destroy($id)
     {
-        //
+        $categories = Category::findOrFail($id);
+        Category::destroy($id);
+        return Redirect::route('posts.index')->with(
+            'message', "Category with id {$id} is deleted successfully.");
     }
 
 }
