@@ -9,6 +9,7 @@ class Post extends \Eloquent
 
     public static $rules = [
         'title' => 'required|min:3',
+        'category_id' => 'required|exists:categories,id',
         'body' => 'required|min:3',
     ];
 

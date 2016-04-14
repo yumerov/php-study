@@ -8,6 +8,7 @@ View::composers([
     'PostComposer@show' => 'posts.show',
     'PostComposer@create' => 'posts.create',
     'PostComposer@edit' => 'posts.edit',
+    'PostComposer@category_field' => 'parts.posts.fields.category',
 
     'CategoryComposer@show' => 'categories.show',
     'CategoryComposer@edit' => 'categories.edit',

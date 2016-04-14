@@ -27,4 +27,10 @@ class PostComposer
         $view->with(compact('pageTitle'));
     }
 
+    public function category_field($view)
+    {
+        $category_selects = Category::lists('name', 'id');
+        $view->with(compact('category_selects'));
+    }
+
 }
