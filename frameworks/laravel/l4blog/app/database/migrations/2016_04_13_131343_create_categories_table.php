@@ -21,9 +21,6 @@ class CreateCategoriesTable extends Migration
             $table->softDeletes();
         });
 
-        // Schema::table('posts', function (Blueprint $table) {
-        // });
-
         Schema::table('posts', function (Blueprint $table) {
             $table->engine = 'InnoDB';
             $table
