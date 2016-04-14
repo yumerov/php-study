@@ -2,6 +2,14 @@
 
 class PostController extends \BaseController
 {
+    protected function storeImage($image)
+    {
+        $destination = 'uploads';
+        $name = uniqid(rand(), true) . '.' . $image->getClientOriginalExtension();
+        $image->move("public/{$destination}", $name);
+
+        return "/{$destination}/{$name}";
+    }
 
     /**
      * Display a listing of the resource.
@@ -38,6 +46,9 @@ class PostController extends \BaseController
                 ->withErrors($validator)
                 ->withInput();
         } else {
+            if (Input::hasFile('image')) {
+                $data['image'] = $this->storeImage(Input::file('image'));
+            }
             $post = Post::create($data);
             $response = Redirect::route('posts.show', ['posts' => $post->id]);
         }
@@ -87,6 +98,12 @@ class PostController extends \BaseController
                 ->withErrors($validator)
                 ->withInput();
         } else {
+            if (Input::hasFile('image')) {
+                $data['image'] = $this->storeImage(Input::file('image'));
+                if (is_null($post->image) === false) {
+                    File::delete(public_path() . $post->image);
+                }
+            }
             $post = $post->update($data);
             $response = Redirect::route('posts.edit', ['posts' => $id])
                 ->with('success', 'The post is updated successfully.');

@@ -4,7 +4,7 @@
 	<article class="blog-post">
 		<h2 class="blog-post-title">Create a post</h2>
 
-		{{ Form::open(['route' => 'posts.store']) }}
+		{{ Form::open(['route' => 'posts.store', 'files' => true]) }}
 	  		@include('parts.posts.fields', compact('post', 'errors'))
 		    {{ Form::submit('Create', ['class' => 'btn btn-primary']) }}
 	    {{ Form::close() }}

@@ -34,8 +34,6 @@ class PostsTableSeeder extends Seeder
 
         foreach ($files as $file) {
             File::delete("{$file}");
-            // $this->command->getOutput()->writeln("<info>File:</info> {$dir}/{$file}");
-
         }
     }
 
