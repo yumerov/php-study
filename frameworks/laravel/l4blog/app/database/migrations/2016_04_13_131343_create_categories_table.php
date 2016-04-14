@@ -41,11 +41,15 @@ class CreateCategoriesTable extends Migration
      */
     public function down()
     {
+        DB::statement('SET FOREIGN_KEY_CHECKS = 0');
+
         Schema::drop('categories');
 
         Schema::table('posts', function (Blueprint $table) {
-            $table->dropForeign('category_id');
+            $table->dropForeign('posts_category_id_foreign');
         });
+
+        DB::statement('SET FOREIGN_KEY_CHECKS = 1');
     }
 
 }

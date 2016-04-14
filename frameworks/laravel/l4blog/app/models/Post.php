@@ -13,7 +13,7 @@ class Post extends \Eloquent
         'body' => 'required|min:3',
     ];
 
-    protected $fillable = ['title', 'body', 'category_id'];
+    protected $fillable = ['title', 'body', 'category_id', 'image'];
 
     public function category()
     {
