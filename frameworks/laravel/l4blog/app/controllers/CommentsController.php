@@ -90,7 +90,11 @@ class CommentsController extends \BaseController
     {
         $comment = Comment::findOrFail($id);
         $post_id = $comment->post_id;
+<<<<<<< HEAD
         Comment::destroy($id);
+=======
+        Category::destroy($id);
+>>>>>>> d7682e0e5c72dbb1e37d8e68595d8568f333321b
         Session::flash(
             'comment-deleted',
             "The comment with id {$id} is deleted successfully.");
