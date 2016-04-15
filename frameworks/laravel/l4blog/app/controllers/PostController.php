@@ -103,6 +103,8 @@ class PostController extends \BaseController
                 if (is_null($post->image) === false) {
                     File::delete(public_path() . $post->image);
                 }
+            } else {
+                unset($data['image']);
             }
             $post = $post->update($data);
             $response = Redirect::route('posts.edit', ['posts' => $id])
