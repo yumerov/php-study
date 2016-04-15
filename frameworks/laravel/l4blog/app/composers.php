@@ -17,4 +17,7 @@ View::composers([
     'CategoryComposer@show' => 'categories.show',
     'CategoryComposer@edit' => 'categories.edit',
     'CategoryComposer@create' => 'categories.create',
+
+    'CommentComposer@body' => 'comments.parts.body',
+    'CommentComposer@edit' => 'comments.edit',
 ]);
