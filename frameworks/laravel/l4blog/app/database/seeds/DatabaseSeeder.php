@@ -9,6 +9,7 @@ class DatabaseSeeder extends Seeder
     protected $tables = [
         'categories',
         'posts',
+        'comments',
     ];
 
     /**
@@ -17,6 +18,7 @@ class DatabaseSeeder extends Seeder
     protected $seeders = [
         'CategoriesTableSeeder',
         'PostsTableSeeder',
+        'CommentsTableSeeder',
     ];
 
     /**
