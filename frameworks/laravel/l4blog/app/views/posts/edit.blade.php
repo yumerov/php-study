@@ -14,7 +14,7 @@
             'route' => ['posts.update', $post->id],
             'method' => 'patch',
             'files' => true,]) }}
-            @include('parts.posts.fields', compact('post', 'errors'))
+            @include('posts.parts.fields', compact('post', 'errors'))
         {{ Form::submit('Update', ['class' => 'btn btn-primary']) }}
     {{ Form::close() }}
 
