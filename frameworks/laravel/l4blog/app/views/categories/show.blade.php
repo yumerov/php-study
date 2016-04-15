@@ -8,9 +8,7 @@
     </div><!-- /.sidebar-module.sidebar-module-inset -->
     @foreach($posts as $post)
     <article class="blog-post">
-        @include('parts.posts.header', compact('post'))
-        @include('parts.posts.body', compact('post'))
-        @include('parts.posts.footer', compact('post'))
+        @include('posts.view', compact('post'))
     </article><!-- /.blog-post -->
     @endforeach
 

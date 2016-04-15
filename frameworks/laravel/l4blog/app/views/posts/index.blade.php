@@ -9,9 +9,7 @@
 
 @foreach($posts as $post)
     <article class="blog-post">
-        @include('posts.parts.header', compact('post'))
-        @include('posts.parts.body', compact('post'))
-        @include('posts.parts.footer', compact('post'))
+        @include('posts.view', compact('post'))
     </article><!-- /.blog-post -->
 @endforeach
 
