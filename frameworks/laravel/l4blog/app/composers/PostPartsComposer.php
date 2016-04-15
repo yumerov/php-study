@@ -16,13 +16,22 @@ class PostPartsComposer
         $commentsHref = URL::route('posts.show', ['posts' => $post->id])
             . '#comments';
 
+        if ($post->comments_count === 0) {
+            $commentsLabel = 'No comments yet';
+        } elseif ($post->comments_count === 1) {
+            $commentsLabel = '1 Comment';
+        } else {
+            $commentsLabel = "{$post->comments_count} Comments";
+        }
+
         $view->with(compact(
             'title',
             'date',
             'hasCategory',
             'categoryHref',
             'categoryName',
-            'commentsHref'
+            'commentsHref',
+            'commentsLabel'
         ));
     }
 
@@ -38,12 +47,21 @@ class PostPartsComposer
     public function footer($view)
     {
         $data = $view->getData();
-        $href = URL::route('posts.show', ['posts' => $data['post']->id]);
+        $post = $data['post'];
+        $href = URL::route('posts.show', $post->id);
         $classes = 'btn btn-sm btn-primary pull-right';
         $label = 'Read more';
         $isShow = (Route::current()->getName() === 'posts.show');
+        $comments = $post->comments;
+        $commentDeleted = Session::get('comment-deleted', null);
 
-        $view->with(compact('href', 'classes', 'label', 'isShow'));
+        $view->with(compact(
+            'href',
+            'classes',
+            'label',
+            'isShow',
+            'comments',
+            'commentDeleted'));
     }
 
 }

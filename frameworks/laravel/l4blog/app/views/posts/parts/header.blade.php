@@ -14,6 +14,6 @@
 
     <a href="{{ $commentsHref }}" class="label label-info">
         <i class="glyphicon glyphicon-comment"></i>&nbsp;
-        <span>%X Comments</span>&nbsp;
+        <span>{{ $commentsLabel }}</span>&nbsp;
     </a>
 </p>
