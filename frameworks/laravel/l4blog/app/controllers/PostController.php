@@ -127,5 +127,4 @@ class PostController extends \BaseController
         return Redirect::route('posts.index')->with(
             'message', "Post with id {$id} is deleted successfully.");
     }
-
 }

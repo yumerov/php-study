@@ -10,6 +10,11 @@ class PostPartsComposer
 
         $title = $post->title;
         $date = $post->created_at->format('F j, Y');
+
+        $hasAuthor = (is_null($post->author) === false);
+        $authorHref = (($hasAuthor) ? '#authorHref' : null);
+        $authorName = (($hasAuthor) ? $post->author->display_name : null);
+
         $hasCategory = (is_null($post->category) === false);
         $categoryHref = ($hasCategory) ? URL::route('categories.show', $post->category->id) : null;
         $categoryName = ($hasCategory) ? $post->category->name : null;
@@ -27,6 +32,9 @@ class PostPartsComposer
         $view->with(compact(
             'title',
             'date',
+            'hasAuthor',
+            'authorName',
+            'authorHref',
             'hasCategory',
             'categoryHref',
             'categoryName',

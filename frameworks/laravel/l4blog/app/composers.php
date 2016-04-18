@@ -2,6 +2,7 @@
 
 View::composers([
     'LayoutComposer@general' => 'layouts.default',
+    'LayoutComposer@nav' => 'parts.nav',
     'LayoutComposer@sidebar' => 'parts.sidebar',
 
     'PostComposer@index' => 'posts.index',
@@ -20,4 +21,6 @@ View::composers([
 
     'CommentComposer@body' => 'comments.parts.body',
     'CommentComposer@edit' => 'comments.edit',
+
+    'UserComposer@login' => 'users.login',
 ]);

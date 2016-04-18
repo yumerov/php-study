@@ -12,19 +12,7 @@
   <link rel="icon" type="image/png" href="favicon.ico">
 </head>
 <body>
-  @if (!empty($nav))
-  <div class="blog-masthead">
-    <div class="container">
-      <nav class="blog-nav">
-        @foreach ($nav as $item)
-        <a class="blog-nav-item" href="{{ $item['link'] }}">
-          {{ $item['title'] }}
-        </a>
-        @endforeach
-      </nav><!-- /.blog-nav -->
-    </div><!-- /.container -->
-  </div><!-- /.blog-masthead -->
-  @endif
+  @include('parts.nav')
 
   <div class="container">
     <div class="blog-header">
