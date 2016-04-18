@@ -3,6 +3,14 @@
 class CommentsController extends \BaseController
 {
 
+    public function __construct()
+    {
+        $this->beforeFilter(
+            'auth',
+            ['except' => ['store']]
+        );
+    }
+
     /**
      * Store a newly created resource in storage.
      * POST /comments
@@ -93,10 +101,11 @@ class CommentsController extends \BaseController
         Comment::destroy($id);
         Session::flash(
             'comment-deleted',
-            "The comment with id {$id} is deleted successfully.");
+            "The comment with id {$id} is deleted successfully."
+        );
         return Redirect::route('posts.show', [
             'posts' => $post_id,
-            '#comments']);
+            '#comments'
+        ]);
     }
-
 }

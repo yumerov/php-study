@@ -2,6 +2,15 @@
 
 class PostController extends \BaseController
 {
+
+    public function __construct()
+    {
+        $this->beforeFilter(
+            'auth',
+            ['except' => ['index', 'show']]
+        );
+    }
+
     protected function storeImage($image)
     {
         $destination = 'uploads';
@@ -125,6 +134,8 @@ class PostController extends \BaseController
         $post = Post::findOrFail($id);
         Post::destroy($id);
         return Redirect::route('posts.index')->with(
-            'message', "Post with id {$id} is deleted successfully.");
+            'message',
+            "Post with id {$id} is deleted successfully."
+        );
     }
 }

@@ -3,6 +3,14 @@
 class CategoryController extends \BaseController
 {
 
+    public function __construct()
+    {
+        $this->beforeFilter(
+            'auth',
+            ['except' => ['show']]
+        );
+    }
+
     /**
      * Show the form for creating a new resource.
      *
@@ -97,7 +105,8 @@ class CategoryController extends \BaseController
         $categories = Category::findOrFail($id);
         Category::destroy($id);
         return Redirect::route('posts.index')->with(
-            'message', "Category with id {$id} is deleted successfully.");
+            'message',
+            "Category with id {$id} is deleted successfully."
+        );
     }
-
 }

@@ -5,7 +5,16 @@ Route::resource('posts', 'PostController');
 Route::resource('categories', 'CategoryController');
 Route::resource('comments', 'CommentsController');
 
-Route::get('/login', ['uses' => 'UsersController@login', 'as' => 'login']);
-Route::post('/auth', ['uses' => 'UsersController@auth', 'as' => 'auth']);
-Route::get('/logout', ['uses' => 'UsersController@logout', 'as' => 'logout']);
+Route::get('/login', [
+    'before' => 'guest',
+    'uses' => 'UsersController@login',
+    'as' => 'login']);
+Route::post('/auth', [
+    'before' => 'guest',
+    'uses' => 'UsersController@auth',
+    'as' => 'auth']);
+Route::get('/logout', [
+    'before' => 'auth',
+    'uses' => 'UsersController@logout',
+    'as' => 'logout']);
 Route::resource('users', 'UsersController');
