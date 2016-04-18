@@ -41,6 +41,7 @@ class PostsTableSeeder extends Seeder
     {
         $faker = Faker::create();
         $categories = Category::lists('id');
+        $users = User::lists('id');
         $this->deleteAllFiles();
 
         foreach (range(1, 5) as $index) {
@@ -48,6 +49,7 @@ class PostsTableSeeder extends Seeder
                 'title' => $faker->sentence(),
                 'image' => $this->saveImage(),
                 'body' => $faker->text(),
+                'author_id' => $faker->randomElement($users),
                 'category_id' => $faker->randomElement($categories),
                 'created_at' => Carbon::now()
                     ->month(rand(1, 10))->day(rand(1, 25))->toDateTimeString(),
