@@ -13,6 +13,7 @@ class UsersTableSeeder extends Seeder {
 		{
 			User::create([
                 'username' => $faker->word(),
+                'display_name' => $faker->words(rand(1, 3), true),
                 'password' => Hash::make('pass'),
 			]);
 		}

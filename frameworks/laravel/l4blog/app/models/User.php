@@ -18,6 +18,8 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
         'password' => 'required',
     ];
 
+    protected $fillable = ['username', 'password', 'display_name'];
+
     /**
      * The database table used by the model.
      *
