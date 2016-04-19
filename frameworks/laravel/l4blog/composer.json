@@ -11,6 +11,9 @@
     "way/generators": "~2.0"
   },
   "autoload": {
+    "psr-4": {
+        "Admin\\Controllers\\": "admin/controllers"
+    },
     "classmap": [
       "app/commands",
       "app/controllers",

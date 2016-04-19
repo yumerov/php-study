@@ -22,3 +22,5 @@ Route::get('/logout', [
     'uses' => 'UsersController@logout',
     'as' => 'logout']);
 Route::resource('users', 'UsersController');
+
+Route::get('/admin/posts', 'Admin\\Controllers\\PostsController@index');
