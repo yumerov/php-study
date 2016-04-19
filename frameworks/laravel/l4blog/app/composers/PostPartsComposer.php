@@ -69,7 +69,7 @@ class PostPartsComposer
             'label',
             'isShow',
             'comments',
-            'commentDeleted'));
+            'commentDeleted'
+        ));
     }
-
 }

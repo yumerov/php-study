@@ -23,13 +23,18 @@ class LayoutComposer
 
         if (Auth::check()) {
             $nav['left'][] = [
-                'link' => URL::route('posts.create'),
-                'title' => 'Create a Post',
-            ];
-
-            $nav['left'][] = [
-                'link' => URL::route('categories.create'),
-                'title' => 'Create a Category',
+                'childs' => [
+                    [
+                        'link' => URL::route('posts.list'),
+                        'title' => 'All',
+                    ],
+                    [
+                        'link' => URL::route('posts.create'),
+                        'title' => 'Create',
+                    ],
+                ],
+                'title' => 'Posts',
+                'link' => '#',
             ];
 
             if (Route::current()->getName() === 'posts.show') {

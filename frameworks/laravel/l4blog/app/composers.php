@@ -6,11 +6,12 @@ View::composers([
     'LayoutComposer@sidebar' => 'parts.sidebar',
 
     'PostComposer@index' => 'posts.index',
+    'PostComposer@listAll' => 'posts.list',
     'PostComposer@show' => 'posts.show',
     'PostComposer@create' => 'posts.create',
     'PostComposer@edit' => 'posts.edit',
 
-    'PostComposer@category_field' => 'posts.parts.fields.category',
+    'PostComposer@categoryField' => 'posts.parts.fields.category',
     'PostPartsComposer@header' => 'posts.parts.header',
     'PostPartsComposer@body' => 'posts.parts.body',
     'PostPartsComposer@footer' => 'posts.parts.footer',

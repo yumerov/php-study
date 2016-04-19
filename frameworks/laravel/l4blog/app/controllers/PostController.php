@@ -30,6 +30,11 @@ class PostController extends \BaseController
         return View::make('posts.index');
     }
 
+    public function listAll()
+    {
+        return View::make('posts.list');
+    }
+
     /**
      * Show the form for creating a new resource.
      *

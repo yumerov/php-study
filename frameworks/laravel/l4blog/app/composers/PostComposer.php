@@ -9,6 +9,13 @@ class PostComposer
         $view->with(compact('posts', 'pageTitle'));
     }
 
+    public function listAll($view)
+    {
+        $posts = Post::orderBy('created_at', 'DESC')->paginate(3);
+        $pageTitle = 'Post list' . ' - ' . '#L4B';
+        $view->with(compact('posts', 'pageTitle'));
+    }
+
     public function show($view)
     {
         $pageTitle = $view->getData()['post']->title . ' - ' . '#L4B';
@@ -27,10 +34,9 @@ class PostComposer
         $view->with(compact('pageTitle'));
     }
 
-    public function category_field($view)
+    public function categoryField($view)
     {
         $category_selects = Category::lists('name', 'id');
         $view->with(compact('category_selects'));
     }
-
 }

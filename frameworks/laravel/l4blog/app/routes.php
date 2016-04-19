@@ -1,6 +1,10 @@
 <?php
 
 Route::get('/', ['uses' => 'PostController@index', 'as' => 'home']);
+Route::get('/posts/list', [
+    'before' => 'auth',
+    'uses' => 'PostController@listAll',
+    'as' => 'posts.list']);
 Route::resource('posts', 'PostController');
 Route::resource('categories', 'CategoryController');
 Route::resource('comments', 'CommentsController');

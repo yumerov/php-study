@@ -14,7 +14,9 @@ class PostsTableSeeder extends Seeder
                 $dir = public_path() . '/uploads/';
                 $name = uniqid(rand(), true) . '.jpg';
                 file_put_contents(
-                    "{$dir}/{$name}", file_get_contents($source));
+                    "{$dir}/{$name}",
+                    file_get_contents($source)
+                );
 
                 $image = "/uploads/{$name}";
             } catch (Exception $ex) {
@@ -58,5 +60,4 @@ class PostsTableSeeder extends Seeder
             ]);
         }
     }
-
 }
