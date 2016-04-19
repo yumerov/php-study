@@ -1,6 +1,6 @@
 <?php
 
-namespace Admin\Controllers;
+namespace Admin;
 
 use Illuminate\Support\Facades\View;
 

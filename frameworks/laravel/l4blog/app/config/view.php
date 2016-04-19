@@ -14,7 +14,7 @@ return array(
     */
 
     'paths' => [
-        __DIR__.'/../../admin/views',
+        __DIR__.'/../views/admin',
         __DIR__.'/../views',
     ],
 
