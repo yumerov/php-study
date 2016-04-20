@@ -9,4 +9,7 @@
 
     {{ widget('admin', 'recent_created_posts', ['cols' => 6]) }}
     {{ widget('admin', 'recent_updated_posts', ['cols' => 6]) }}
+    {{ widget('admin', 'recent_created_posts', ['cols' => 4]) }}
+    {{ widget('admin', 'recent_created_posts', ['cols' => 4]) }}
+    {{ widget('admin', 'recent_created_posts', ['cols' => 4]) }}
 @stop

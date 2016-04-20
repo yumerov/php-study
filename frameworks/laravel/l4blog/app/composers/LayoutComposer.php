@@ -23,13 +23,17 @@ class LayoutComposer
         $nav['left'] = [];
         $nav['right'] = [];
         $currentRoute = Route::current()->getName();
-
-        $nav['left'][] = [
+        $home = [
             'link' => URL::route('home'),
             'title' => 'Home',
         ];
 
         if (Auth::check()) {
+            $nav['left'][] = [
+                'link' => URL::route('dashboard'),
+                'title' => 'Dashboard',
+            ];
+
             $nav['left'][] = [
                 'childs' => [
                     [
@@ -110,11 +114,14 @@ class LayoutComposer
                 ];
             }
 
+            $nav['right'][] = $home;
+
             $nav['right'][] = [
                 'link' => URL::route('logout'),
                 'title' => 'Logout',
             ];
         } else {
+            $nav['left'][] = $home;
             $nav['right'][] = [
                 'link' => URL::route('login'),
                 'title' => 'Login',
