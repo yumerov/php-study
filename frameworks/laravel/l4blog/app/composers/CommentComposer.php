@@ -19,7 +19,7 @@ class CommentComposer
             Session::forget('last-comment-id');
         }
 
-        $editHref = URL::route('comments.edit', $comment->id);
+        $editHref = URL::route('admin.comments.edit', $comment->id);
 
         $view->with(compact(
             'id',
@@ -27,7 +27,8 @@ class CommentComposer
             'body',
             'post_id',
             'classes',
-            'editHref'));
+            'editHref'
+        ));
     }
 
     public function edit($view)
@@ -38,5 +39,4 @@ class CommentComposer
 
         $view->with(compact('post', 'pageTitle'));
     }
-
 }

@@ -4,9 +4,16 @@ class LayoutComposer
 {
     public function general($view)
     {
-        $blogTitle = '#L4B';
+        $blog = new \stdClass;
+        $blog->title = '#l4b';
+        $blog->description = '#description';
+        $blog->footer = 'Basic blog platform build with Laravel 4 and '
+            . 'Bootstrap 3.';
 
-        $view->with(compact('blogTitle'));
+        $page = new \stdClass;
+        $page->title = '#title';
+
+        $view->with(compact('blog', 'page'));
     }
 
     public function nav($view)
@@ -15,6 +22,7 @@ class LayoutComposer
         $nav = [];
         $nav['left'] = [];
         $nav['right'] = [];
+        $currentRoute = Route::current()->getName();
 
         $nav['left'][] = [
             'link' => URL::route('home'),
@@ -25,28 +33,55 @@ class LayoutComposer
             $nav['left'][] = [
                 'childs' => [
                     [
-                        'link' => URL::route('posts.list'),
+                        'link' => URL::route('admin.posts.index'),
                         'title' => 'All',
                     ],
                     [
-                        'link' => URL::route('posts.create'),
+                        'link' => URL::route('admin.posts.create'),
                         'title' => 'Create',
                     ],
                 ],
                 'title' => 'Posts',
                 'link' => '#',
             ];
+            $nav['left'][] = [
+                'childs' => [
+                    [
+                        'link' => URL::route('admin.categories.index'),
+                        'title' => 'All',
+                    ],
+                    [
+                        'link' => URL::route('admin.categories.create'),
+                        'title' => 'Create',
+                    ],
+                ],
+                'title' => 'Categories',
+                'link' => '#',
+            ];
 
-            if (Route::current()->getName() === 'posts.show') {
+            $nav['left'][] = [
+                'childs' => [
+                    [
+                        'link' => URL::route('admin.comments.index'),
+                        'title' => 'All',
+                    ],
+                    [
+                        'link' => URL::route('admin.comments.create'),
+                       'title' => 'Create',
+                    ],
+                ],
+                'title' => 'Comments',
+                'link' => '#',
+            ];
+
+            if ($currentRoute === 'posts.show') {
                 $nav['left'][] = [
-                    'link' => URL::route('posts.edit', [
-                        'posts' => $data['post']->id,
-                    ]),
+                    'link' => URL::route('admin.posts.edit', $data['post']->id),
                     'title' => 'Edit the Post',
                 ];
             }
 
-            if (Route::current()->getName() === 'posts.edit') {
+            if ($currentRoute === 'admin.posts.edit') {
                 $nav['left'][] = [
                     'link' => URL::route('posts.show', [
                         'posts' => $data['post']->id,
@@ -55,16 +90,22 @@ class LayoutComposer
                 ];
             }
 
-            if (Route::current()->getName() === 'categories.show') {
+            if ($currentRoute === 'categories.show') {
                 $nav['left'][] = [
-                    'link' => URL::route('categories.edit', $data['category']->id),
+                    'link' => URL::route(
+                        'admin.categories.edit',
+                        $data['category']->id
+                    ),
                     'title' => 'Edit the Post',
                 ];
             }
 
-            if (Route::current()->getName() === 'categories.edit') {
+            if ($currentRoute === 'admin.categories.edit') {
                 $nav['left'][] = [
-                    'link' => URL::route('categories.show', $data['category']->id),
+                    'link' => URL::route(
+                        'categories.show',
+                        $data['category']->id
+                    ),
                     'title' => 'Show the Post',
                 ];
             }

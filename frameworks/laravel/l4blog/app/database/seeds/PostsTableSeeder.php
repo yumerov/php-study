@@ -46,7 +46,7 @@ class PostsTableSeeder extends Seeder
         $users = User::lists('id');
         $this->deleteAllFiles();
 
-        foreach (range(1, 5) as $index) {
+        foreach (range(1, 25) as $index) {
             Post::create([
                 'title' => $faker->sentence(),
                 'image' => $this->saveImage(),

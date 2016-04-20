@@ -1,26 +1,46 @@
 <?php
 
-// Route::get('/', ['uses' => 'PostController@index', 'as' => 'home']);
-// Route::get('/posts/list', [
-//     'before' => 'auth',
-//     'uses' => 'PostController@listAll',
-//     'as' => 'posts.list']);
-// Route::resource('posts', 'PostController');
-// Route::resource('categories', 'CategoryController');
-// Route::resource('comments', 'CommentsController');
 
-// Route::get('/login', [
-//     'before' => 'guest',
-//     'uses' => 'UsersController@login',
-//     'as' => 'login']);
-// Route::post('/auth', [
-//     'before' => 'guest',
-//     'uses' => 'UsersController@auth',
-//     'as' => 'auth']);
-// Route::get('/logout', [
-//     'before' => 'auth',
-//     'uses' => 'UsersController@logout',
-//     'as' => 'logout']);
-// Route::resource('users', 'UsersController');
+Route::get('/logout', [
+    'before' => 'auth',
+    'uses' => 'UsersController@logout',
+    'as' => 'logout']);
 
-Route::get('/admin/posts', 'Admin\PostsController@index');
+# common
+Route::post('comments', [
+    'uses' => 'CommentsController@store',
+    'as' => 'comments.store',
+]);
+Route::resource('users', 'UsersController');
+
+# frontend
+Route::group(['namespace' => 'Frontend'], function () {
+    Route::get('/', ['uses' => 'PostsController@index', 'as' => 'home']);
+    Route::get('/posts/{id}', [
+        'uses' => 'PostsController@show',
+        'as' => 'posts.show',
+    ]);
+    Route::get('/categories/{id}', [
+        'uses' => 'CategoriesController@show',
+        'as' => 'categories.show',
+    ]);
+    Route::get('/login', [
+        'uses' => 'UsersController@login',
+        'as' => 'login',
+    ]);
+    Route::post('/auth', [
+        'before' => 'guest',
+        'uses' => 'UsersController@auth',
+        'as' => 'auth',
+    ]);
+});
+
+# admin
+Route::group([
+    'prefix' => 'admin',
+    'namespace' => 'Admin',
+    'before' => 'auth'], function () {
+    Route::resource('posts', 'PostsController');
+    Route::resource('categories', 'CategoriesController');
+    Route::resource('comments', 'CommentsController');
+});
