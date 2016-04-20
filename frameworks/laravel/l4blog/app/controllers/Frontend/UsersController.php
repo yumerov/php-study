@@ -13,12 +13,25 @@ class UsersController extends \BaseController
     {
         $data = \Input::only('username', 'password');
         if (\Auth::attempt($data)) {
-            $response = \Redirect::route('home');
+            $response = \Redirect::route('dashboard');
         } else {
             Session::flash('message', 'Invalid credentials');
             $response = \Redirect::route('login');
         }
 
         return $response;
+    }
+
+    public function show($id)
+    {
+        $user = \User::findOrfail($id);
+        $posts = \Post::where('author_id', '=', $id)->paginate(3);
+
+        return \View::make('users.show', compact('user', 'posts'));
+    }
+
+    public function register()
+    {
+        return \View::make('users.register');
     }
 }

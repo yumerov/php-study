@@ -27,6 +27,7 @@ View::composers([
     'Admin\CategoriesComposer@row' => 'categories.parts.row',
 
     'Admin\CommentsComposer@row' => 'comments.parts.row',
+    'Admin\UsersComposer@row' => 'users.parts.row',
 ]);
 
 # frontend
@@ -39,4 +40,6 @@ View::composers([
     'Frontend\PostsComposer@footer' => 'posts.parts.footer',
 
     'Frontend\CategoriesComposer@show' => 'categories.show',
+
+    'Frontend\UsersComposer@show' => 'users.show',
 ]);

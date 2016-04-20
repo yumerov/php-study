@@ -29,7 +29,8 @@ class PostsComposer
 
         $author = new \stdClass;
         $author->has = (is_null($post->author) === false);
-        $author->href = (($author->has) ? '#authorHref' : null);
+        $author->href = (($author->has)
+            ? \URL::route('users.show', $post->author_id) : null);
         $author->name = (($author->has) ? $post->author->display_name : null);
 
         $category = new \stdClass;

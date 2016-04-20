@@ -9,8 +9,7 @@ class UsersTableSeeder extends Seeder {
 	{
 		$faker = Faker::create();
 
-		foreach(range(1, 10) as $index)
-		{
+		foreach (range(1, 1) as $index) {
 			User::create([
                 'username' => $faker->word(),
                 'display_name' => $faker->words(rand(1, 3), true),
@@ -18,5 +17,4 @@ class UsersTableSeeder extends Seeder {
 			]);
 		}
 	}
-
 }

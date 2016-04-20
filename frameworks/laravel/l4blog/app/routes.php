@@ -1,17 +1,15 @@
 <?php
 
-
-Route::get('/logout', [
-    'before' => 'auth',
-    'uses' => 'UsersController@logout',
-    'as' => 'logout']);
-
 # common
 Route::post('comments', [
     'uses' => 'CommentsController@store',
     'as' => 'comments.store',
 ]);
-Route::resource('users', 'UsersController');
+
+Route::post('/users/store', [
+    'uses' => 'UsersController@store',
+    'as' => 'users.store',
+]);
 
 # frontend
 Route::group(['namespace' => 'Frontend'], function () {
@@ -33,6 +31,15 @@ Route::group(['namespace' => 'Frontend'], function () {
         'uses' => 'UsersController@auth',
         'as' => 'auth',
     ]);
+    Route::get('/register', [
+        'before' => 'guest',
+        'uses' => 'UsersController@register',
+        'as' => 'register',
+    ]);
+    Route::get('/users/{id}', [
+        'uses' => 'UsersController@show',
+        'as' => 'users.show',
+    ]);
 });
 
 # admin
@@ -42,9 +49,15 @@ Route::group([
     'before' => 'auth'], function () {
     Route::get('/', [
         'uses' => 'DashboardController@index',
-        'as' => 'dashboard',
-    ]);
+        'as' => 'dashboard',]);
     Route::resource('posts', 'PostsController');
     Route::resource('categories', 'CategoriesController');
     Route::resource('comments', 'CommentsController');
+    Route::resource('users', 'UsersController');
 });
+
+Route::get('/logout', [
+    'before' => 'auth',
+    'uses' => 'Admin\\UsersController@logout',
+    'as' => 'logout',
+]);

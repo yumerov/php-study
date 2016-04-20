@@ -7,9 +7,9 @@ class UsersController extends \BaseController
 
     public function logout()
     {
-        Auth::logout();
-        Session::flash('message', 'Logged out successfully.');
-        return Redirect::route('home');
+        \Auth::logout();
+        \Session::flash('message', 'Logged out successfully.');
+        return \Redirect::route('home');
     }
 
     /**
@@ -19,7 +19,8 @@ class UsersController extends \BaseController
      */
     public function index()
     {
-        //
+        $users = $posts = \User::paginate(3);
+        return \View::make('admin.users.index', compact('users'));
     }
 
     /**
@@ -29,32 +30,8 @@ class UsersController extends \BaseController
      */
     public function create()
     {
-        //
+        return \View::make('admin.users.create');
     }
-
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @return Response
-     */
-    public function store()
-    {
-        //
-    }
-
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
 
     /**
      * Show the form for editing the specified resource.
@@ -64,7 +41,8 @@ class UsersController extends \BaseController
      */
     public function edit($id)
     {
-        //
+        $user = \User::findOrFail($id);
+        return \View::make('users.edit', compact('user'));
     }
 
 
@@ -76,7 +54,38 @@ class UsersController extends \BaseController
      */
     public function update($id)
     {
-        //
+        $user = \User::findOrFail($id);
+
+        $new = [];
+        $rules = [];
+        $data = \Input::only('username', 'display_name', 'password');
+        $new['display_name'] = $data['display_name'];
+        $rules['display_name'] = \User::$rules['display_name'];
+
+        if ($user->username !== $data['username']) {
+            $new['username'] = $data['username'];
+            $rules['username'] = \User::$rules['username'];
+        }
+
+        if (!empty($data['password'])) {
+            $new['password'] = $data['password'];
+            $rules['password'] = \User::$rules['password'];
+        }
+
+        $validator = \Validator::make($new, $rules);
+        $redirect = \Redirect::route('admin.users.edit', $id);
+
+        if ($validator->fails()) {
+            $response = $redirect
+                ->withErrors($validator)
+                ->withInput();
+        } else {
+            $user = $user->update($new);
+            $response = $redirect
+                ->with('success', 'The profile is updated successfully.');
+        }
+
+        return $response;
     }
 
 
@@ -88,6 +97,11 @@ class UsersController extends \BaseController
      */
     public function destroy($id)
     {
-        //
+        $user = \User::findOrFail($id);
+        \User::destroy($id);
+        return \Redirect::route('dashboard')->with(
+            'message',
+            "User with id {$id} is deleted successfully."
+        );
     }
 }

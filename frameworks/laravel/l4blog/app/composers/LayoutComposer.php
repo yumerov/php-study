@@ -78,6 +78,21 @@ class LayoutComposer
                 'link' => '#',
             ];
 
+            $nav['left'][] = [
+                'childs' => [
+                    [
+                        'link' => URL::route('admin.users.index'),
+                        'title' => 'All',
+                    ],
+                    [
+                        'link' => URL::route('admin.users.create'),
+                       'title' => 'Create',
+                    ],
+                ],
+                'title' => 'Users',
+                'link' => '#',
+            ];
+
             if ($currentRoute === 'posts.show') {
                 $nav['left'][] = [
                     'link' => URL::route('admin.posts.edit', $data['post']->id),
@@ -87,9 +102,7 @@ class LayoutComposer
 
             if ($currentRoute === 'admin.posts.edit') {
                 $nav['left'][] = [
-                    'link' => URL::route('posts.show', [
-                        'posts' => $data['post']->id,
-                    ]),
+                    'link' => URL::route('posts.show', $data['post']->id),
                     'title' => 'Show the Post',
                 ];
             }
@@ -117,6 +130,11 @@ class LayoutComposer
             $nav['right'][] = $home;
 
             $nav['right'][] = [
+                'link' => URL::route('admin.users.edit', Auth::id()),
+                'title' => 'Profile',
+            ];
+
+            $nav['right'][] = [
                 'link' => URL::route('logout'),
                 'title' => 'Logout',
             ];
@@ -125,6 +143,10 @@ class LayoutComposer
             $nav['right'][] = [
                 'link' => URL::route('login'),
                 'title' => 'Login',
+            ];
+            $nav['right'][] = [
+                'link' => URL::route('register'),
+                'title' => 'Register',
             ];
         }
 
