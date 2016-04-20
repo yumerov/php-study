@@ -17,6 +17,7 @@ return array(
         __DIR__.'/../views/frontend',
         __DIR__.'/../views/admin',
         __DIR__.'/../views/parts',
+        __DIR__.'/../widgets/views',
         __DIR__.'/../views',
     ],
 

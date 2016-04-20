@@ -123,10 +123,4 @@ class LayoutComposer
 
         $view->with(compact('nav'));
     }
-
-    public function sidebar($view)
-    {
-        $categories = Category::all();
-        $view->with(compact('categories'));
-    }
 }

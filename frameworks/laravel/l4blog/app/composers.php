@@ -5,7 +5,6 @@
 View::composers([
     'LayoutComposer@general' => 'layouts.master',
     'LayoutComposer@nav' => 'parts.nav',
-    'LayoutComposer@sidebar' => 'parts.sidebar',
 
     'CommentComposer@body' => 'comments.parts.body',
     'CommentComposer@edit' => 'comments.edit',
