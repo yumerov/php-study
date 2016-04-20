@@ -9,7 +9,7 @@ class CategoryListWidget implements \WidgetInterface
         return \Category::all();
     }
 
-    public function render()
+    public function render($data = [])
     {
         $categories = $this->data();
         return \View::make('frontend.category_list')

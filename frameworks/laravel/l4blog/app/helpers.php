@@ -1,6 +1,6 @@
 <?php
 
-function widget($prefix, $name)
+function widget($prefix, $name, $data = [])
 {
     $prefix = ucfirst($prefix);
     $class = preg_replace_callback("/(?:^|_)([a-z])/", function ($matches) {
@@ -9,6 +9,6 @@ function widget($prefix, $name)
     $full = $prefix . '\\' . $class;
     if (class_exists($full)) {
         $widget = new $full;
-        return $widget->render();
+        return $widget->render($data);
     }
 }

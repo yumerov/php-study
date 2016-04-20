@@ -40,6 +40,10 @@ Route::group([
     'prefix' => 'admin',
     'namespace' => 'Admin',
     'before' => 'auth'], function () {
+    Route::get('/', [
+        'uses' => 'DashboardController@index',
+        'as' => 'dashboard',
+    ]);
     Route::resource('posts', 'PostsController');
     Route::resource('categories', 'CategoriesController');
     Route::resource('comments', 'CommentsController');
