@@ -6,10 +6,16 @@
             {{ Session::get('message')}}
         </div>
     @endif
+    
+    <div class="col-sm-6">
+        {{ widget('admin', 'recent_created_posts') }}
+        {{ widget('admin', 'recent_created_posts') }}
+    </div>
 
-    {{ widget('admin', 'recent_created_posts', ['cols' => 6]) }}
-    {{ widget('admin', 'recent_updated_posts', ['cols' => 6]) }}
-    {{ widget('admin', 'recent_created_posts', ['cols' => 4]) }}
-    {{ widget('admin', 'recent_created_posts', ['cols' => 4]) }}
-    {{ widget('admin', 'recent_created_posts', ['cols' => 4]) }}
+    <div class="col-sm-6">
+        {{ widget('admin', 'recent_updated_posts') }}
+        {{ widget('admin', 'recent_updated_posts') }}
+        {{ widget('admin', 'recent_updated_posts') }}
+        
+    </div>
 @stop
