@@ -1,0 +1,1 @@
+{{-- Result of "php artisan generate:resource document" --}}
