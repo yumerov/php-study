@@ -121,8 +121,10 @@ return array(
 		'Illuminate\Validation\ValidationServiceProvider',
 		'Illuminate\View\ViewServiceProvider',
 		'Illuminate\Workbench\WorkbenchServiceProvider',
+
 		'Way\Generators\GeneratorsServiceProvider',
 		'Awjudd\FeedReader\FeedReaderServiceProvider',
+		'mnshankar\CSV\CSVServiceProvider',
 
 	],
 
@@ -191,7 +193,8 @@ return array(
 		'Validator'         => 'Illuminate\Support\Facades\Validator',
 		'View'              => 'Illuminate\Support\Facades\View',
 
-		'FeedReader'      => 'Awjudd\FeedReader\Facades\FeedReader',
+		'FeedReader' => 'Awjudd\FeedReader\Facades\FeedReader',
+		'CSV' =>'mnshankar\CSV\CSVFacade',
 
 	],
 
