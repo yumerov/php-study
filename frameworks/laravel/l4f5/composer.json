@@ -5,7 +5,9 @@
 	"license": "MIT",
 	"type": "project",
 	"require": {
-		"laravel/framework": "4.2.*"
+		"laravel/framework": "4.2.*",
+		"simplepie/simplepie": "dev-master",
+		"awjudd/feed-reader": "1.1.*"
 	},
 	"require-dev": {
 	    "way/generators": "~2.0"
