@@ -1,0 +1,9 @@
+<?php
+
+/**
+ * @author Levent Yumerov <yumerov.levent@gmail.com>
+ */
+class $NAME$ extends \Eloquent
+{
+	protected $fillable = [];
+}

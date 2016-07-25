@@ -1,0 +1,1 @@
+{{-- Result of "php artisan generate:scaffold navigation" --}}
