@@ -2,6 +2,8 @@
 
 class DatabaseSeeder extends Seeder {
 
+	protected $tables = ['Dogs'];
+
 	/**
 	 * Run the database seeds.
 	 *
@@ -11,7 +13,9 @@ class DatabaseSeeder extends Seeder {
 	{
 		Eloquent::unguard();
 
-		// $this->call('UserTableSeeder');
+		foreach ($this->tables as $table) {
+			$this->call("{$table}TableSeeder");
+		}
 	}
 
 }

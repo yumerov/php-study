@@ -7,16 +7,16 @@ use Faker\Factory as Faker;
 
 class NavigationsTableSeeder extends Seeder {
 
-	public function run()
-	{
-		$faker = Faker::create();
+    public function run()
+    {
+        // $faker = Faker::create();
 
-		foreach(range(1, 10) as $index)
-		{
-			Navigation::create([
+        // foreach(range(1, 10) as $index)
+        // {
+        //  Navigation::create([
 
-			]);
-		}
-	}
+        //  ]);
+        // }
+    }
 
 }

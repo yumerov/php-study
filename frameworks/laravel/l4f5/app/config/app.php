@@ -195,6 +195,7 @@ return array(
 
 		'FeedReader' => 'Awjudd\FeedReader\Facades\FeedReader',
 		'CSV' =>'mnshankar\CSV\CSVFacade',
+		'SearchableTrait' => 'Nicolaslopezj\Searchable\SearchableTrait',
 
 	],
 

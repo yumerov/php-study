@@ -13,3 +13,4 @@
 
 Artisan::add(new FeedReaderCommand);
 Artisan::add(new CsvCommand);
+Artisan::add(new SearchableCommand);
