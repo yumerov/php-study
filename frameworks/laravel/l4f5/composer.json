@@ -10,7 +10,8 @@
 		"awjudd/feed-reader": "1.1.*",
 		"mnshankar/CSV": "1.8",
 		"nicolaslopezj/searchable": "1.7.2",
-		"php-di/invoker": "1.2.0"
+		"php-di/invoker": "1.2.0",
+		"intervention/image": "2.3.*"
 	},
 	"require-dev": {
 	    "way/generators": "~2.0"
