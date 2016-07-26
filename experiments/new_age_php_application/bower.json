@@ -5,6 +5,7 @@
     ],
     "private": true,
     "dependencies": {
-        "jquery-validation": "1.12.*"
+        "jquery-validation": "1.12.*",
+        "bootstrap": "3.3.*"
     }
 }
