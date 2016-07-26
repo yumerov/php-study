@@ -125,6 +125,7 @@ return array(
 		'Way\Generators\GeneratorsServiceProvider',
 		'Awjudd\FeedReader\FeedReaderServiceProvider',
 		'mnshankar\CSV\CSVServiceProvider',
+		'Intervention\Image\ImageServiceProvider',
 
 	],
 
@@ -196,6 +197,7 @@ return array(
 		'FeedReader' => 'Awjudd\FeedReader\Facades\FeedReader',
 		'CSV' =>'mnshankar\CSV\CSVFacade',
 		'SearchableTrait' => 'Nicolaslopezj\Searchable\SearchableTrait',
+		'Image' => 'Intervention\Image\Facades\Image',
 
 	],
 
