@@ -1,0 +1,10 @@
+{
+    "name": "napa",
+    "authors": [
+        "Levent Yumerov <yumerov.levent@gmail.com>"
+    ],
+    "private": true,
+    "dependencies": {
+        "jquery-validation": "1.12.*"
+    }
+}
