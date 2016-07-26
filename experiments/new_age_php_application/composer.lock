@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "c284a9c122da36c99a8b6597bdce7aa6",
-    "content-hash": "8b1485987e7c5949da82435d403e52e8",
+    "hash": "862d26990327c6113ba19f13681e6611",
+    "content-hash": "a170def25059194bcc67cc1bc4920e60",
     "packages": [
         {
             "name": "classpreloader/classpreloader",
@@ -1782,6 +1782,116 @@
     ],
     "packages-dev": [
         {
+            "name": "beelab/bowerphp",
+            "version": "v0.4.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Bee-Lab/bowerphp.git",
+                "reference": "e2e6eab8be46150122b92d75835dcb895bff65f8"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Bee-Lab/bowerphp/zipball/e2e6eab8be46150122b92d75835dcb895bff65f8",
+                "reference": "e2e6eab8be46150122b92d75835dcb895bff65f8",
+                "shasum": ""
+            },
+            "require": {
+                "camspiers/json-pretty": "1.0.*",
+                "ext-fileinfo": "*",
+                "ext-zip": "*",
+                "knplabs/github-api": "^1.4",
+                "php": ">=5.3.6",
+                "symfony/console": "~2.3|~3.0",
+                "symfony/filesystem": "~2.4|~3.0",
+                "symfony/finder": "~2.3|~3.0",
+                "symfony/process": "~2.3|~3.0",
+                "vierbergenlars/php-semver": "~3.0"
+            },
+            "require-dev": {
+                "ext-phar": "*",
+                "fabpot/php-cs-fixer": "~1.5",
+                "mockery/mockery": "~0.9.3",
+                "phpunit/phpunit": "4.*|5.*"
+            },
+            "bin": [
+                "bin/bowerphp"
+            ],
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Bowerphp\\": "src/Bowerphp"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Massimiliano Arione",
+                    "email": "massimiliano.arione@bee-lab.net"
+                },
+                {
+                    "name": "Mauro D'Alatri",
+                    "email": "mauro.dalatri@bee-lab.net"
+                },
+                {
+                    "name": "The Community",
+                    "homepage": "https://github.com/Bee-Lab/bowerphp/graphs/contributors"
+                }
+            ],
+            "description": "An implementation of bower in PHP",
+            "homepage": "http://bowerphp.org/",
+            "keywords": [
+                "bower",
+                "dependency",
+                "frontend",
+                "package"
+            ],
+            "time": "2016-05-24 14:29:06"
+        },
+        {
+            "name": "camspiers/json-pretty",
+            "version": "1.0.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/camspiers/json-pretty.git",
+                "reference": "17be37cb83af8014658da48fa0012604179039a7"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/camspiers/json-pretty/zipball/17be37cb83af8014658da48fa0012604179039a7",
+                "reference": "17be37cb83af8014658da48fa0012604179039a7",
+                "shasum": ""
+            },
+            "require-dev": {
+                "phpunit/phpunit": "~4.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "Camspiers": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Cam Spiers",
+                    "email": "cameron@heyday.co.nz"
+                }
+            ],
+            "description": "Provides support for json pretty printing",
+            "time": "2016-02-06 01:25:58"
+        },
+        {
             "name": "doctrine/instantiator",
             "version": "1.0.5",
             "source": {
@@ -1884,6 +1994,99 @@
             "time": "2016-04-29 12:21:54"
         },
         {
+            "name": "guzzle/guzzle",
+            "version": "v3.8.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/guzzle/guzzle.git",
+                "reference": "4de0618a01b34aa1c8c33a3f13f396dcd3882eba"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/guzzle/guzzle/zipball/4de0618a01b34aa1c8c33a3f13f396dcd3882eba",
+                "reference": "4de0618a01b34aa1c8c33a3f13f396dcd3882eba",
+                "shasum": ""
+            },
+            "require": {
+                "ext-curl": "*",
+                "php": ">=5.3.3",
+                "symfony/event-dispatcher": ">=2.1"
+            },
+            "replace": {
+                "guzzle/batch": "self.version",
+                "guzzle/cache": "self.version",
+                "guzzle/common": "self.version",
+                "guzzle/http": "self.version",
+                "guzzle/inflection": "self.version",
+                "guzzle/iterator": "self.version",
+                "guzzle/log": "self.version",
+                "guzzle/parser": "self.version",
+                "guzzle/plugin": "self.version",
+                "guzzle/plugin-async": "self.version",
+                "guzzle/plugin-backoff": "self.version",
+                "guzzle/plugin-cache": "self.version",
+                "guzzle/plugin-cookie": "self.version",
+                "guzzle/plugin-curlauth": "self.version",
+                "guzzle/plugin-error-response": "self.version",
+                "guzzle/plugin-history": "self.version",
+                "guzzle/plugin-log": "self.version",
+                "guzzle/plugin-md5": "self.version",
+                "guzzle/plugin-mock": "self.version",
+                "guzzle/plugin-oauth": "self.version",
+                "guzzle/service": "self.version",
+                "guzzle/stream": "self.version"
+            },
+            "require-dev": {
+                "doctrine/cache": "*",
+                "monolog/monolog": "1.*",
+                "phpunit/phpunit": "3.7.*",
+                "psr/log": "1.0.*",
+                "symfony/class-loader": "*",
+                "zendframework/zend-cache": "<2.3",
+                "zendframework/zend-log": "<2.3"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "3.8-dev"
+                }
+            },
+            "autoload": {
+                "psr-0": {
+                    "Guzzle": "src/",
+                    "Guzzle\\Tests": "tests/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Michael Dowling",
+                    "email": "mtdowling@gmail.com",
+                    "homepage": "https://github.com/mtdowling"
+                },
+                {
+                    "name": "Guzzle Community",
+                    "homepage": "https://github.com/guzzle/guzzle/contributors"
+                }
+            ],
+            "description": "Guzzle is a PHP HTTP client library and framework for building RESTful web service clients",
+            "homepage": "http://guzzlephp.org/",
+            "keywords": [
+                "client",
+                "curl",
+                "framework",
+                "http",
+                "http client",
+                "rest",
+                "web service"
+            ],
+            "abandoned": "guzzlehttp/guzzle",
+            "time": "2014-01-28 22:29:15"
+        },
+        {
             "name": "hamcrest/hamcrest-php",
             "version": "v1.2.2",
             "source": {
@@ -1927,6 +2130,68 @@
                 "test"
             ],
             "time": "2015-05-11 14:41:42"
+        },
+        {
+            "name": "knplabs/github-api",
+            "version": "1.7.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/KnpLabs/php-github-api.git",
+                "reference": "fe913715d280cc0a5f78a5366c02ad78c0305c66"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/KnpLabs/php-github-api/zipball/fe913715d280cc0a5f78a5366c02ad78c0305c66",
+                "reference": "fe913715d280cc0a5f78a5366c02ad78c0305c66",
+                "shasum": ""
+            },
+            "require": {
+                "ext-curl": "*",
+                "guzzle/guzzle": "~3.7",
+                "php": ">=5.3.2"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "~4.0",
+                "sllh/php-cs-fixer-styleci-bridge": "~1.3"
+            },
+            "suggest": {
+                "knplabs/gaufrette": "Needed for optional Gaufrette cache"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.5.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Github\\": "lib/Github/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Thibault Duplessis",
+                    "email": "thibault.duplessis@gmail.com",
+                    "homepage": "http://ornicar.github.com"
+                },
+                {
+                    "name": "KnpLabs Team",
+                    "homepage": "http://knplabs.com"
+                }
+            ],
+            "description": "GitHub API v3 client",
+            "homepage": "https://github.com/KnpLabs/php-github-api",
+            "keywords": [
+                "api",
+                "gh",
+                "gist",
+                "github"
+            ],
+            "time": "2016-05-29 11:15:42"
         },
         {
             "name": "mockery/mockery",
@@ -3054,6 +3319,55 @@
             "time": "2016-06-29 05:40:00"
         },
         {
+            "name": "symfony/filesystem",
+            "version": "v3.1.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/filesystem.git",
+                "reference": "322da5f0910d8aa0b25fa65ffccaba68dbddb890"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/filesystem/zipball/322da5f0910d8aa0b25fa65ffccaba68dbddb890",
+                "reference": "322da5f0910d8aa0b25fa65ffccaba68dbddb890",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.5.9"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "3.1-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Symfony\\Component\\Filesystem\\": ""
+                },
+                "exclude-from-classmap": [
+                    "/Tests/"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Fabien Potencier",
+                    "email": "fabien@symfony.com"
+                },
+                {
+                    "name": "Symfony Community",
+                    "homepage": "https://symfony.com/contributors"
+                }
+            ],
+            "description": "Symfony Filesystem Component",
+            "homepage": "https://symfony.com",
+            "time": "2016-06-29 05:41:56"
+        },
+        {
             "name": "symfony/yaml",
             "version": "v3.1.2",
             "source": {
@@ -3101,6 +3415,58 @@
             "description": "Symfony Yaml Component",
             "homepage": "https://symfony.com",
             "time": "2016-06-29 05:41:56"
+        },
+        {
+            "name": "vierbergenlars/php-semver",
+            "version": "3.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/vierbergenlars/php-semver.git",
+                "reference": "516bb3061577e60e9420cbecc479362d3ad8c7f1"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/vierbergenlars/php-semver/zipball/516bb3061577e60e9420cbecc479362d3ad8c7f1",
+                "reference": "516bb3061577e60e9420cbecc479362d3ad8c7f1",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.0"
+            },
+            "require-dev": {
+                "simpletest/simpletest": "1.1.*"
+            },
+            "bin": [
+                "bin/semver",
+                "bin/update-versions"
+            ],
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "vierbergenlars\\SemVer\\": "src/",
+                    "vierbergenlars\\LibJs\\": "src/"
+                },
+                "classmap": [
+                    "src/vierbergenlars/SemVer/internal.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Lars Vierbergen",
+                    "email": "vierbergenlars@gmail.com"
+                }
+            ],
+            "description": "The Semantic Versioner for PHP",
+            "keywords": [
+                "semantic",
+                "semver",
+                "versioning"
+            ],
+            "time": "2015-05-02 19:28:54"
         },
         {
             "name": "webmozart/assert",
