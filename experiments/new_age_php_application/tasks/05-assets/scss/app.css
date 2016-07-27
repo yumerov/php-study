@@ -1,0 +1,9 @@
+h1.title {
+  font: normal 16px 'Open Sans', sans-serif;
+  color: #f44336; }
+
+div.container {
+  color: #f44336;
+  background: #fff;
+  width: 100%;
+  box-shadow: 0 2px 1px 0 rgba(0, 0, 0, 0.2); }
