@@ -1,0 +1,13 @@
+@import "vars";
+
+h1.title {
+    font: $title-font;
+    color: $cool-red;
+}
+
+div.container {
+    color: $cool-red;
+    background: #fff;
+    width: 100%;
+    box-shadow: $box-shadow-bottom-only;
+}
